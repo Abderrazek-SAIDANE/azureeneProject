@@ -89,9 +89,9 @@ table.dataTable tbody tr:hover {
 }
 
 :root {
-  --primary-color: #013fa2; /* Couleur principale */
+  --primary-color: #858700; /* Couleur principale */
   --secondary-color: #6366f1; /* Couleur secondaire */
-  --text-color: #4c4827; /* Couleur du texte */
+  --text-color: #ffffff; /* Couleur du texte */
   --hover-color: #f3f4f6; /* Couleur au survol */
 }
 
@@ -124,7 +124,7 @@ table.dataTable tbody td {
   }
 }
 
-@media (max-width: 1000) {
+@media (max-width: 1000px) {
   table.dataTable {
     display: block; /* Permet le défilement horizontal */
     overflow-x: auto; /* Ajoute un défilement si nécessaire */
