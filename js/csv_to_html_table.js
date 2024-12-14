@@ -49,7 +49,7 @@ CsvToHtmlTable = {
                         // Utilisation de templates personnalisés si disponibles
                         var cellTemplateFunc = customTemplates[colIdx];
                         if (cellTemplateFunc) {
-                            $tableBodyRowTd.append($("<td></td>")).html(cellTemplateFunc(csvData[rowIdx][colIdx], rowIdx, colIdx));
+                            $tableBodyRowTd.append($("<td></td>")).html(cellTemplateFunc("css/images/"+csvData[rowIdx][colIdx+1]+".jpg", rowIdx, colIdx));
                         } else {
                             $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
                         }
