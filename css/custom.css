@@ -61,53 +61,33 @@ img {
   margin-right: 8px;
   opacity: 0.7;
 }
+@media (max-width: 768px) {
+  table.dataTable {
+    display: block; /* Permet le défilement horizontal */
+    overflow-x: auto; /* Ajoute un défilement si nécessaire */
+    white-space: nowrap; /* Empêche le texte de se casser */
+  }
 
-/* テーブル全体 */
-table.dataTable {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: 1px solid #e5e7eb; /* Tailwindのgray-200 */
-}
+  table.dataTable thead {
+    display: none; /* Cache l'en-tête sur mobile */
+  }
 
-/* ヘッダー */
-table.dataTable thead th {
-  background-color: #f9fafb; /* Tailwindのgray-50 */
-  color: #013fa2; /* Tailwindのgray-700 */
-  text-align: left;
-  padding: 0.5rem;
-  font-size: 0.875rem; /* Tailwindのtext-sm */
-  font-weight: 500; /* Tailwindのfont-medium */
-}
+  table.dataTable tbody td {
+    display: block;
+    text-align: right; /* Aligne le texte à droite */
+    padding-left: 50%; /* Décale le texte à droite */
+    position: relative;
+  }
 
-table.dataTable thead {
-  display: none; /* Cache l'en-tête sur mobile */
-}
-
-/* ボディ */
-table.dataTable tbody td {
-  padding: 0.5rem;
-  font-size: 0.875rem; /* Tailwindのtext-sm */
-  color: #4c4827; /* Tailwindのgray-700 */
-  display: block;
-  text-align: right; /* Aligne le texte à droite */
-  padding-left: 50%; /* Décale le texte à droite */
-  position: relative;
-}
-
-table.dataTable tbody td:before {
-  content: attr(data-label); /* Affiche une étiquette avant la cellule */
-  position: absolute;
-  left: 0;
-  width: 50%;
-  padding-left: 15px;
-  font-weight: bold;
-  text-align: left;
-}
-
-/* 行のホバー */
-table.dataTable tbody tr:hover {
-  background-color: #f3f4f6; /* Tailwindのgray-100 */
+  table.dataTable tbody td:before {
+    content: attr(data-label); /* Affiche une étiquette avant la cellule */
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
 }
 
 /* ページネーションボタン */
