@@ -1,73 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CSV to HTML Table</title>
-    <meta name="author" content="Derek Eder">
-    <meta content="Display any CSV file as a searchable, filterable, pretty HTML table">
+   
+
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>    
+      <link rel="stylesheet" href="css/custom.css"> <!-- Lien vers le fichier CSS -->
+
+      <style>
+        /* テーブル全体 */
+        table.dataTable {
+          width: 100%;
+          border-collapse: collapse;
+          border-spacing: 0;
+          border: 1px solid #e5e7eb; /* Tailwindのgray-200 */
+        }
+  
+        /* ヘッダー */
+        table.dataTable thead th {
+          background-color: #f9fafb; /* Tailwindのgray-50 */
+          color: #013fa2; /* Tailwindのgray-700 */
+          text-align: left;
+          padding: 0.5rem;
+          font-size: 0.875rem; /* Tailwindのtext-sm */
+          font-weight: 500; /* Tailwindのfont-medium */
+        }
+  
+        /* ボディ */
+        table.dataTable tbody td {
+          padding: 0.5rem;
+          font-size: 0.875rem; /* Tailwindのtext-sm */
+          color: #4c4827; /* Tailwindのgray-700 */
+        }
+  
+        /* 行のホバー */
+        table.dataTable tbody tr:hover {
+          background-color: #f3f4f6; /* Tailwindのgray-100 */
+        }
+  
+        /* ページネーションボタン */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+          padding: 0.25rem 0.5rem;
+          margin: 0 0.25rem;
+          border: 1px solid #e5e7eb; /* Tailwindのgray-200 */
+          border-radius: 0.375rem; /* Tailwindのrounded-lg */
+          color: #374151; /* Tailwindのgray-700 */
+          background-color: white;
+          font-size: 0.875rem; /* Tailwindのtext-sm */
+          transition: all 0.2s;
+        }
+  
+        /* ページネーションボタンホバー */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+          background-color: rgb(72, 72, 187); /* Tailwindのgray-50 */
+          border-color: #d1d5db; /* Tailwindのgray-300 */
+        }
+  
+        /* ページネーションのアクティブ */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+          background-color: #6366f1; /* Tailwindのindigo-600 */
+          color: white;
+          border-color: #6366f1;
+        }
+  
+        .dataTables_filter {
+          margin-bottom: 1rem; /* 検索フォームの下にスペースを追加 */
+        }
+      </style>
+      
 </head>
 
 <body>
-    <div class="container-fluid">
-        <main class="row">
-            <div class="col">
-                <h1>CSV to HTML Table</h1>
-
-                <p>Display any CSV file as a searchable, filterable, pretty HTML table. Done in 100% JavaScript. <a
-                        href="https://github.com/derekeder/csv-to-html-table">Code
-                        on GitHub</a>.</p>
-
-                <p> Here's a table of Health Clinics from the <a href="https://data.cityofchicago.org/browse?q=health%20clinic&sortBy=relevance&utf8=%E2%9C%93">City
-                        of Chicago Data Portal</a>.
-                </p>
-
-                <div id="table-container"></div>
-            </div>
-        </main>
-        <footer class="row">
-            <div class="col">
-                <hr>
-                <p class="text-right"><a href="https://github.com/derekeder/csv-to-html-table">CSV to HTML Table</a> by
-                    <a href="http://derekeder.com">Derek
-                        Eder</a></p>
-            </div>
-        </footer>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.csv.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <style>
+        
+    </style>
+        <div class="container-fluid">
+            <main class="row">
+                <div class="col">
+                    <header>
+                        <img src="data/azurennePicture.jpg" alt="Description de l'image" width="400" >
+                        
+                    </header>
+                    <br><h1>Azuréenne de change</h1>
+                    <div id="table-container"></div>
+                </div>
+            </main>
+        </div>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="js/csv_to_html_table.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+
+    
 
     <script>
-        function format_link(link) {
-            if (link)
-                return "<a href='" + link + "' target='_blank'>" + link + "</a>";
-            else return "";
-        }
-
         CsvToHtmlTable.init({
-            csv_path: "data/Health Clinics in Chicago.csv",
+            csv_path: "data/test2.csv",
             element: "table-container",
-            allow_download: true,
+            allow_download: false,
             csv_options: {
-                separator: ",",
+                separator: ";",
                 delimiter: '"'
             },
             datatables_options: {
-                paging: false
+                paging: true
             },
             custom_formatting: [
-                [4, format_link]
+                [0, CsvToHtmlTable.imageFormatter]
             ]
         });
     </script>

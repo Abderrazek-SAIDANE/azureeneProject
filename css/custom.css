@@ -2,68 +2,30 @@
 /*
 DePaul IHS
 */
-
-@font-face {
-    font-family: 'GibsonSemiBold';
-    src: url('/css/fonts/gibson-semibold-webfont.eot');
-    src: url('/css/fonts/gibson-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/css/fonts/gibson-semibold-webfont.woff') format('woff'),
-         url('/css/fonts/gibson-semibold-webfont.ttf') format('truetype'),
-         url('/css/fonts/gibson-semibold-webfont.svg#GibsonSemiBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'GibsonBold';
-    src: url('/css/fonts/gibson-bold-webfont.eot');
-    src: url('/css/fonts/gibson-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/css/fonts/gibson-bold-webfont.woff') format('woff'),
-         url('/css/fonts/gibson-bold-webfont.ttf') format('truetype'),
-         url('/css/fonts/gibson-bold-webfont.svg#GibsonBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'ColaborateThinRegular';
-    src: url('/css/fonts/ColabThi-webfont.eot');
-    src: url('/css/fonts/ColabThi-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/css/fonts/ColabThi-webfont.woff') format('woff'),
-         url('/css/fonts/ColabThi-webfont.ttf') format('truetype'),
-         url('/css/fonts/ColabThi-webfont.svg#ColaborateThinRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'ColaborateRegRegular';
-    src: url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.eot');
-    src: url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.woff') format('woff'),
-         url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.ttf') format('truetype'),
-         url('http://www.housingstudies.org/static/css/fonts/ColabReg-webfont.svg#ColaborateRegRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'AlegreyaBold';
-    src: url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.eot');
-    src: url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.woff') format('woff'),
-         url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.ttf') format('truetype'),
-         url('http://www.housingstudies.org/static/css/fonts/Alegreya-Bold-webfont.svg#AlegreyaBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-    
+   
 body { 
-  font: 18px/1.3em 'ColaborateThinRegular', sans-serif;
+  color: rgb(0, 0, 0); /* Optionnel : définit la couleur du texte en blanc pour plus de contraste */
+  margin: 0; /* Enlève les marges par défaut */
+  padding: 0; /* Enlève le padding par défaut */
+  font-family: Arial, sans-serif; /* Choix de police */
+}
+
+/* Style pour l'en-tête */
+header {
+  display: flex; /* Utilise flexbox pour centrer l'élément */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 150px; /* Hauteur de l'en-tête (ajustable selon vos besoins) */
+  padding: 20px; /* Ajoute de l'espace autour du contenu */
 }
 
 h1 {
-  font: 32px/1em 'GibsonBold', serif;
+  justify-content: center;
+  align-items: center;
+  display: flex; 
+  font: 32px/1em 'GibsonBold', Arial;
   text-transform: uppercase;
-  color: #827E7E;
+  color: rgb(8, 22, 221);
 }
 
 h2 {
@@ -73,16 +35,21 @@ h2 {
 }
 
 #logo {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 #logo img { width: 170px; }
 
+img {
+  max-width: 100%; /* L'image ne dépassera pas la largeur de son conteneur */
+  height: auto; /* Maintient les proportions de l'image */
+}
+
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255,255,255,0.8);
+  background: rgb(123, 42, 42);
+  background: rgba(93, 9, 9, 0.8);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
 }
@@ -103,3 +70,5 @@ h2 {
   margin-right: 8px;
   opacity: 0.7;
 }
+
+/* la première colonne de mon tableau contient des urls d'images, je veux affichés ces images sur mon tableau */
