@@ -61,34 +61,6 @@ img {
   margin-right: 8px;
   opacity: 0.7;
 }
-@media (max-width: 768px) {
-  table.dataTable {
-    display: block; /* Permet le défilement horizontal */
-    overflow-x: auto; /* Ajoute un défilement si nécessaire */
-    white-space: nowrap; /* Empêche le texte de se casser */
-  }
-
-  table.dataTable thead {
-    display: none; /* Cache l'en-tête sur mobile */
-  }
-
-  table.dataTable tbody td {
-    display: block;
-    text-align: right; /* Aligne le texte à droite */
-    padding-left: 50%; /* Décale le texte à droite */
-    position: relative;
-  }
-
-  table.dataTable tbody td:before {
-    content: attr(data-label); /* Affiche une étiquette avant la cellule */
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 15px;
-    font-weight: bold;
-    text-align: left;
-  }
-}
 
 /* ページネーションボタン */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -119,10 +91,35 @@ img {
   margin-bottom: 1rem; /* 検索フォームの下にスペースを追加 */
 }
 
+/* Rendre le tableau responsive */
 @media (max-width: 768px) {
   table.dataTable {
-    display: block; /* Permet le défilement horizontal */
-    overflow-x: auto; /* Ajoute un défilement si nécessaire */
+    display: block; /* Rend le tableau défilable horizontalement */
+    overflow-x: auto; /* Ajoute une barre de défilement horizontale si nécessaire */
     white-space: nowrap; /* Empêche le texte de se casser */
+  }
+
+  table.dataTable thead {
+    display: none; /* Cache l'en-tête du tableau pour gagner de l'espace */
+  }
+
+  table.dataTable tbody tr {
+    display: flex;
+    flex-direction: column; /* Affiche chaque ligne comme une liste verticale */
+    border-bottom: 1px solid #ddd; /* Séparation visuelle entre les lignes */
+  }
+
+  table.dataTable tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #e5e7eb; /* Sépare les cellules */
+  }
+
+  table.dataTable tbody td:before {
+    content: attr(data-label); /* Affiche une étiquette basée sur "data-label" */
+    font-weight: bold;
+    color: #333;
+    flex: 1;
   }
 }
