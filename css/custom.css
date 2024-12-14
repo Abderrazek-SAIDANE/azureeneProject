@@ -48,20 +48,6 @@ img {
   color: #777;
 }
 
-.legend {
-  text-align: left;
-  line-height: 18px;
-  color: #555;
-}
-
-.legend i {
-  width: 18px;
-  height: 18px;
-  float: left;
-  margin-right: 8px;
-  opacity: 0.7;
-}
-
 /* ページネーションボタン */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   padding: 0.25rem 0.5rem;
@@ -91,35 +77,78 @@ img {
   margin-bottom: 1rem; /* 検索フォームの下にスペースを追加 */
 }
 
-/* Rendre le tableau responsive */
-@media (max-width: 768px) {
+table.dataTable tbody tr:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.01);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.info {
+  background: rgba(93, 9, 9, 0.8);
+  color: white; /* Texte blanc pour un contraste élevé */
+}
+
+:root {
+  --primary-color: #013fa2; /* Couleur principale */
+  --secondary-color: #6366f1; /* Couleur secondaire */
+  --text-color: #4c4827; /* Couleur du texte */
+  --hover-color: #f3f4f6; /* Couleur au survol */
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+table.dataTable tbody td {
+  color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
   table.dataTable {
-    display: block; /* Rend le tableau défilable horizontalement */
-    overflow-x: auto; /* Ajoute une barre de défilement horizontale si nécessaire */
+    background-color: #1e1e1e;
+    border-color: #333;
+  }
+
+  table.dataTable thead th {
+    background-color: #333;
+    color: #fff;
+  }
+
+  table.dataTable tbody tr:hover {
+    background-color: #444;
+  }
+}
+
+@media (max-width: 1000) {
+  table.dataTable {
+    display: block; /* Permet le défilement horizontal */
+    overflow-x: auto; /* Ajoute un défilement si nécessaire */
     white-space: nowrap; /* Empêche le texte de se casser */
   }
 
   table.dataTable thead {
-    display: none; /* Cache l'en-tête du tableau pour gagner de l'espace */
-  }
-
-  table.dataTable tbody tr {
-    display: flex;
-    flex-direction: column; /* Affiche chaque ligne comme une liste verticale */
-    border-bottom: 1px solid #ddd; /* Séparation visuelle entre les lignes */
+    display: none; /* Cache l'en-tête sur mobile */
   }
 
   table.dataTable tbody td {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px;
-    border-bottom: 1px solid #e5e7eb; /* Sépare les cellules */
+    display: block;
+    text-align: right; /* Aligne le texte à droite */
+    padding-left: 50%; /* Décale le texte à droite */
+    position: relative;
   }
 
   table.dataTable tbody td:before {
-    content: attr(data-label); /* Affiche une étiquette basée sur "data-label" */
+    content: attr(data-label); /* Affiche une étiquette avant la cellule */
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
     font-weight: bold;
-    color: #333;
-    flex: 1;
+    text-align: left;
   }
 }
