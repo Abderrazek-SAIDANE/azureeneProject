@@ -150,11 +150,11 @@ table.dataTable tbody td {
     border-bottom: 1px solid #ddd;
   }
 
-  table.dataTable td:before {
+  /*table.dataTable td:before {
     content: attr(data-label); /* Utilise l'attribut data-label pour afficher les titres */
-    font-weight: bold;
+  /*  font-weight: bold;
     color: #333;
-  }
+  }*/
 
     /*table.dataTable {
     display: block; /* Permet le défilement horizontal */
@@ -175,15 +175,15 @@ table.dataTable tbody td {
     text-align: right; /* Aligne le texte à droite */
     /*padding-left: 50%; /* Décale le texte à droite */
     /*position: relative;
-  }
+  }*/
 
   table.dataTable tbody td:before {
     content: attr(data-label); /* Affiche une étiquette avant la cellule */
-    /*position: absolute;
+    position: absolute;
     left: 0;
     width: 50%;
     padding-left: 15px;
     font-weight: bold;
     text-align: left;
-  }*/
+  }
 }
