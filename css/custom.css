@@ -111,7 +111,7 @@ table.dataTable tbody td {
 
   table.dataTable {
     background-color: #1e1e1e;
-    border-color: #333;
+    border-color: rgb(163, 178, 0);
   }
 
   table.dataTable thead th {
@@ -150,11 +150,11 @@ table.dataTable tbody td {
     border-bottom: 1px solid #ddd;
   }
 
-  table.dataTable td:before {
+  /*table.dataTable td:before {
     content: attr(data-label); /* Utilise l'attribut data-label pour afficher les titres */
-    font-weight: bold;
+    /*font-weight: bold;
     color: #333;
-  }
+  }*/
 
     table.dataTable {
     display: block; /* Permet le défilement horizontal */
@@ -174,7 +174,12 @@ table.dataTable tbody td {
     display: block;
     text-align: right; /* Aligne le texte à droite */
     padding-left: 50%; /* Décale le texte à droite */
-    position: relative;
+    position: absolute;
+  }
+
+  #Drapeau {
+    text-align: center; /* Centre horizontalement le texte */
+    vertical-align: middle; /* Centre verticalement le texte */
   }
 
   table.dataTable tbody td:before {
@@ -182,8 +187,17 @@ table.dataTable tbody td {
     position: absolute;
     /*left: 0;*/
     width: 50%;
-    padding-left: 15px;
+    padding-left: 7px;
     font-weight: bold;
-    text-align: right;
+    text-align: left;
   }
+
+  table.dataTable tbody tr:hover {
+    background-color: #f3f4f6;
+    transform: scale(1.01);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  
+
 }
