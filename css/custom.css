@@ -197,7 +197,7 @@ table.dataTable tbody td {
   .td {
     display: flex; /* Active Flexbox */
     justify-content: space-between; /* Sépare la label et la valeur */
-    align-items: center; /* Centre verticalement les éléments */
+    align-items: right; /* Centre verticalement les éléments */
     width: 100%; /* Assure que l'élément occupe toute la largeur */
   }
 
