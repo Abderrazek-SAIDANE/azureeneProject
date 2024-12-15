@@ -134,9 +134,36 @@ table.dataTable tbody td {
     display: block;
   }
 
-  table.dataTable thead {
-    display: none; /* Cache l'en-tête sur mobile */
+  tr {
+    display: flex;
+    flex-wrap: wrap; /* Permet d'organiser les lignes en blocs */
+    margin-bottom: 15px; /* Espacement entre les "lignes" */
+    border: 1px solid #ddd; /* Ajoute une bordure */
   }
+
+  td {
+    display: flex;
+    justify-content: space-between; /* Étiquette à gauche, valeur à droite */
+    width: 100%; /* Chaque paire étiquette-valeur prend toute la largeur */
+    padding: 8px;
+    border-bottom: 1px solid #ddd; /* Séparation visuelle */
+  }
+
+  td:before {
+    content: attr(data-label); /* Utilise l'attribut data-label comme étiquette */
+    font-weight: bold; /* Rend le label plus visible */
+    color: #333; /* Couleur des labels */
+    flex: 1; /* Étiquette prend tout l'espace à gauche */
+  }
+
+  td {
+    text-align: right; /* Valeur alignée à droite */
+    flex: 1; /* Valeur prend tout l'espace à droite */
+  }
+  
+  /*table.dataTable thead {
+    display: none; /* Cache l'en-tête sur mobile */
+  /*}
 
   table.dataTable tr {
     margin-bottom: 15px;
@@ -148,7 +175,7 @@ table.dataTable tbody td {
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ddd;
-  }
+  }*/
 
   /*table.dataTable td:before {
     content: attr(data-label); /* Utilise l'attribut data-label pour afficher les titres */
@@ -181,9 +208,9 @@ table.dataTable tbody td {
     content: attr(data-label); /* Affiche une étiquette avant la cellule */
     position: absolute;
     /*left: 0;*/
-    width: 50%;
+    width: 100%;
     padding-left: 15px;
     font-weight: bold;
-    text-align: right;
+    text-align: left;
   }
 }
