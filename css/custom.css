@@ -180,10 +180,10 @@ table.dataTable tbody td {
   table.dataTable tbody td:before {
     content: attr(data-label); /* Affiche une étiquette avant la cellule */
     position: absolute;
-    left: 0;
+    /*left: 0;*/
     width: 50%;
     padding-left: 15px;
     font-weight: bold;
-    text-align: left;
+    text-align: right;
   }
 }
