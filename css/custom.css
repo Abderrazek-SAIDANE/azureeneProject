@@ -173,7 +173,7 @@ table.dataTable tbody td {
   table.dataTable tbody td {
     display: block;
     text-align: left; /* Aligne le texte à gauche */
-    padding-left: 50%; /* Décale le texte à droite */
+    /*padding-left: 50%; /* Décale le texte à droite */
     position: relative;
   }
 
@@ -194,7 +194,7 @@ table.dataTable tbody td {
     height: 100%; /* Assure que le conteneur prend toute la hauteur de la cellule */
   }
 
-  .align-label-value {
+  .td {
     display: flex; /* Active Flexbox */
     justify-content: space-between; /* Sépare la label et la valeur */
     align-items: center; /* Centre verticalement les éléments */
