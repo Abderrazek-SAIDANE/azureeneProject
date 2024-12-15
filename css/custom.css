@@ -184,7 +184,7 @@ table.dataTable tbody td {
     width: 50%;
     padding-left: 15px;
     font-weight: bold;
-    text-align: right;
+    text-align: left;
   }
 
   table.dataTable tbody tr:hover {
@@ -192,4 +192,9 @@ table.dataTable tbody td {
     transform: scale(1.01);
     transition: transform 0.2s ease, background-color 0.2s ease;
   }
+
+
+}#Drapeau {
+  text-align: center; /* Centre horizontalement le texte */
+  vertical-align: middle; /* Centre verticalement le texte */
 }
