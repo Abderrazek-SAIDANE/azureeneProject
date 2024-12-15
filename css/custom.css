@@ -190,6 +190,8 @@ table.dataTable tbody td {
 
 
 }#Drapeau {
-  text-align: left; /* Centre horizontalement le texte */
-  vertical-align: left; /* Centre verticalement le texte */
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 100%; /* Assure que le conteneur prend toute la hauteur de la cellule */
 }
