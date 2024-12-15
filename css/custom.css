@@ -187,11 +187,11 @@ table.dataTable tbody td {
     text-align: left;
   }
 
-  table.dataTable tbody tr:hover {
+  /*table.dataTable tbody tr:hover {
     background-color: #f3f4f6;
     transform: scale(1.01);
     transition: transform 0.2s ease, background-color 0.2s ease;
-  }
+  }*/
 
 
 }#Drapeau {
