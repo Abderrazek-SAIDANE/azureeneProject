@@ -33,6 +33,7 @@ h1 {
 img {
   max-width: 100%; /* L'image ne dépassera pas la largeur de son conteneur */
   height: auto; /* Maintient les proportions de l'image */
+  width: auto;
   
 }
 
@@ -125,7 +126,7 @@ table.dataTable tbody td {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   table.dataTable,
   table.dataTable thead,
   table.dataTable tbody,
@@ -187,18 +188,17 @@ table.dataTable tbody td {
     text-align: right;
   }
 
-  #Drapeau {
-    display: flex; /* Active Flexbox */
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    height: 100%; /* Assure que le conteneur prend toute la hauteur de la cellule */
-  }
-
   .td {
     display: flex;
     justify-content: stretch; /* Aligne label à gauche et valeur à droite */
     align-items: center;
     text-align: left;
     padding: 8px;
+    }
+
+    table.dataTable tbody tr:hover {
+      background-color: #f3f4f6;
+      transform: scale(1.01);
+      transition: transform 0.2s ease, background-color 0.2s ease;
     }
 }
