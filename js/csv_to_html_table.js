@@ -44,7 +44,7 @@ CsvToHtmlTable = {
                     for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
 
                         
-                        var $tableBodyRowTd = $("<td data-label='"+tableHead[rowIdx]+"'></td>");
+                        var $tableBodyRowTd = $("<td data-label='tableau'></td>");
 
                         // Utilisation de templates personnalisés si disponibles
                         var cellTemplateFunc = customTemplates[colIdx];
