@@ -187,11 +187,19 @@ table.dataTable tbody td {
     text-align: left;
   }
 
+  #Drapeau {
+    display: flex; /* Active Flexbox */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 100%; /* Assure que le conteneur prend toute la hauteur de la cellule */
+  }
 
+  .align-label-value {
+    display: flex; /* Active Flexbox */
+    justify-content: space-between; /* Sépare la label et la valeur */
+    align-items: center; /* Centre verticalement les éléments */
+    width: 100%; /* Assure que l'élément occupe toute la largeur */
+  }
 
-}#Drapeau {
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  height: 100%; /* Assure que le conteneur prend toute la hauteur de la cellule */
 }
+

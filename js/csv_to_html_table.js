@@ -44,7 +44,8 @@ CsvToHtmlTable = {
                     for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
 
                         
-                        var $tableBodyRowTd = $("<td data-label='"+csvData[0][colIdx]+"'></td>");
+                        var $tableBodyRowTd = $("<div class='align-label-value'");
+                        $tableBodyRowTd.append$("<td data-label='"+csvData[0][colIdx]+"'></td>");
 
                         // Utilisation de templates personnalisés si disponibles
                         var cellTemplateFunc = customTemplates[colIdx];
@@ -53,7 +54,7 @@ CsvToHtmlTable = {
                         } else {
                             $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
                         }
-                        $tableBodyRow.append($tableBodyRowTd);
+                        $tableBodyRow.append($tableBodyRowTd.append("</div>"));
                     }
                     $tableBody.append($tableBodyRow);
                 }
