@@ -197,23 +197,9 @@ table.dataTable tbody td {
   .td {
     display: flex;
     justify-content: space-between; /* Aligne label à gauche et valeur à droite */
-    align-items: center;
+    align-items: end;
     text-align: left;
     padding: 8px;
-    }
-
-    .table-label {
-        font-weight: bold;
-        color: #ccc; /* Couleur des labels */
-    }
-
-    .table-value {
-        color: #fff; /* Couleur des valeurs */
-    }
-
-    .table-value img {
-        max-width: 30px;
-        height: auto;
     }
 }
 
