@@ -132,8 +132,16 @@ table.dataTable tbody td {
   }
 
   table.dataTable thead {
-    display: none; /* Cache l'en-tête sur mobile */
+    display: table-header-group; /* Cache l'en-tête sur mobile */
   }
+
+  table.dataTable thead th {
+    background-color: #f9fafb; /* Garder une couleur de fond */
+    position: sticky; /* Fixer le header lors du défilement */
+    top: 0;
+    z-index: 2;
+  }
+  
 
   table.dataTable tbody td {
     display: block;
