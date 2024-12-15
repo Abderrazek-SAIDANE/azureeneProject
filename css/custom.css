@@ -149,7 +149,7 @@ table.dataTable tbody td {
     display: flex;
     justify-content: space-between;
     /*padding: 10px;*/
-    border-bottom: 1px solid #c7a80c;
+    border-bottom: 0.5px solid #c7a80c;
   }
 
   table.dataTable {
@@ -159,7 +159,7 @@ table.dataTable tbody td {
   }
 
   table.dataTable thead th {
-    background-color: #f9fafb; /* Garder une couleur de fond */
+    background-color: rgb(198, 198, 6); /* Garder une couleur de fond */
     position: sticky; /* Fixer le header lors du défilement */
     top: 0;
     z-index: 2;
@@ -189,11 +189,11 @@ table.dataTable tbody td {
     align-items: center;
     text-align: left;
     padding: 8px;
-    }
+  }
 
-    table.dataTable tbody tr:hover {
-      background-color: rgb(198, 198, 6);
-      transform: scale(1.01);
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
+  table.dataTable tbody tr:hover {
+    background-color: rgb(198, 198, 6);
+    transform: scale(1.01);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
 }
