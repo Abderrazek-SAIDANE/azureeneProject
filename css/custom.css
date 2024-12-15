@@ -172,7 +172,7 @@ table.dataTable tbody td {
 
   table.dataTable tbody td {
     display: block;
-    text-align: right; /* Aligne le texte à droite */
+    text-align: left; /* Aligne le texte à droite */
     /*padding-left: 50%; /* Décale le texte à droite */
     position: relative;
   }
