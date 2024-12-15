@@ -180,6 +180,7 @@ table.dataTable tbody td {
     /*padding-left: 15px;*/
     font-weight: bold;
     text-align: right;
+    white-space: nowrap;
   }
 
   .td {
