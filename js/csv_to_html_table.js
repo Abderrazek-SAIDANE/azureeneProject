@@ -44,12 +44,12 @@ CsvToHtmlTable = {
                     for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
 
                         
-                        var $tableBodyRowTd = $("<td></td>");
+                        var $tableBodyRowTd = $("<td data-label='tableau'></td>");
 
                         // Utilisation de templates personnalisés si disponibles
                         var cellTemplateFunc = customTemplates[colIdx];
                         if (cellTemplateFunc) {
-                            $tableBodyRowTd.append($("<td></td>")).html(cellTemplateFunc("css/images/"+csvData[rowIdx][colIdx+1]+".jpg", rowIdx, colIdx));
+                            $tableBodyRowTd.append($("<td data-label='tableau'></td>")).html(cellTemplateFunc("css/images/"+csvData[rowIdx][colIdx+1]+".jpg", rowIdx, colIdx));
                         } else {
                             $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
                         }
