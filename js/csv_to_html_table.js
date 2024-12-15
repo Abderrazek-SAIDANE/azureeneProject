@@ -42,14 +42,7 @@ CsvToHtmlTable = {
                 for (var rowIdx = 1; rowIdx < csvData.length; rowIdx++) {
                     var $tableBodyRow = $("<tr></tr>");
                     for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
-                        //var $tableBodyRowTd = $("<td data-label='"+csvData[0][colIdx]+"'></td>");
-                        var label = csvData[0][colIdx]; // Première ligne du CSV pour le label
-                        var value = csvData[rowIdx][colIdx]; // Valeur actuelle de la ligne
-
-                        // Crée la structure de la cellule avec deux span
-                        var $tableBodyRowTd = $("<td></td>");
-                        var $labelSpan = $("<span class='table-label'></span>").text(label);
-                        var $valueSpan = $("<span class='table-value'></span>");
+                        var $tableBodyRowTd = $("<td data-label='"+csvData[0][colIdx]+"'></td>");
 
                         // Utilisation de templates personnalisés si disponibles
                         var cellTemplateFunc = customTemplates[colIdx];
