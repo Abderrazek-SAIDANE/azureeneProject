@@ -4,7 +4,7 @@ CsvToHtmlTable = {
 
     init: function (options) {
         options = options || {};
-        var csv_path = options.csv_path || "";
+        var csvData = options.csv_data || null;
         var el = options.element || "table-container";
         var allow_download = options.allow_download || false;
         var csv_options = options.csv_options || {};
@@ -23,8 +23,53 @@ CsvToHtmlTable = {
         var $containerElement = $("#" + el);
         $containerElement.empty().append($table);
 
+        // Si csvData est fourni directement
+        if (csvData) {
+            this.renderTable(csvData, $table, csv_options, datatables_options, customTemplates);
+        } else {
+            console.error("Aucune donnée CSV fournie !");
+        }
+    },
+
+    renderTable: function (data, $table, csv_options, datatables_options, customTemplates) {
+        var csvData = $.csv.toArrays(data, csv_options);
+        // Création du header de la table
+        var $tableHead = $("<thead></thead>");
+        var csvHeaderRow = csvData[0];
+        var $tableHeadRow = $("<tr></tr>");
+        for (var headerIdx = 0; headerIdx < csvHeaderRow.length; headerIdx++) {
+            $tableHeadRow.append($("<th></th>").text(csvHeaderRow[headerIdx]));
+        }
+        $tableHead.append($tableHeadRow);
+        $table.append($tableHead);
+
+        // Création du corps de la table
+        var $tableBody = $("<tbody></tbody>");
+        for (var rowIdx = 1; rowIdx < csvData.length; rowIdx++) {
+            var $tableBodyRow = $("<tr></tr>");
+            for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
+                var $tableBodyRowTd = $("<td data-label='" + csvData[0][colIdx] + "'></td>");
+
+                // Utilisation de templates personnalisés si disponibles
+                var cellTemplateFunc = customTemplates[colIdx];
+                if (cellTemplateFunc) {
+                    $tableBodyRowTd.html(cellTemplateFunc("../images/"+csvData[rowIdx][colIdx+1]+".jpg", rowIdx, colIdx));
+                } else {
+                    $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
+                }
+                $tableBodyRow.append($tableBodyRowTd);
+            }
+            $tableBody.append($tableBodyRow);
+        }
+        $table.append($tableBody);
+
+        // Initialisation de DataTables
+        $table.DataTable(datatables_options);
+    },
+
         // Chargement et traitement du fichier CSV
-        $.when($.get(csv_path)).then(
+            /*       
+            $.when($.get(csv_path)).then(
             function (data) {
 
                 var csvData = $.csv.toArrays(data, csv_options);
@@ -36,10 +81,10 @@ CsvToHtmlTable = {
                     $tableHeadRow.append($("<th></th>").text(csvHeaderRow[headerIdx]));
                 }
                 $tableHead.append($tableHeadRow);
-                $table.append($tableHead);
+                $table.append($tableHead);*/
                 
                 // Création du corps de la table
-                var $tableBody = $("<tbody></tbody>");
+                /*var $tableBody = $("<tbody></tbody>");
                 for (var rowIdx = 1; rowIdx < csvData.length; rowIdx++) {
                     var $tableBodyRow = $("<tr></tr>");
                     for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
@@ -61,7 +106,7 @@ CsvToHtmlTable = {
                 // Initialisation de DataTables
                 $table.DataTable(datatables_options);
             });
-    },
+    },*/
 
     // Fonction pour afficher des images si la cellule contient une URL
     imageFormatter: function (cellValue) {
@@ -78,7 +123,7 @@ CsvToHtmlTable = {
         }
         return ""; // Retourne une cellule vide si aucune URL
     }
-   
+    
 
 };
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>    
-      <link rel="stylesheet" href="./custom.css"> <!-- Lien vers le fichier CSS -->
+      <link rel="stylesheet" href="./css/custom.css"> <!-- Lien vers le fichier CSS -->
       
 </head>
 <body>
@@ -21,7 +21,7 @@
             <main class="row">
                 <div class="col">
                     <header>
-                        <img src="./azurennePicture.jpg" alt="logo" width="400" >
+                        <img src="./images/azurennePicture.jpg" alt="logo" width="400" >
                     </header>
                     <br><h1>Azuréenne de change</h1>
                     <div id="table-container"></div>
@@ -33,52 +33,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="./csv_to_html_table.js"></script>
-    <script src="./jquery.csv.min.js"></script>
+    <script src="./js/csv_to_html_table.js"></script>
+    <script src="./js/jquery.csv.min.js"></script>
 
     <script>    
-            // Fonction pour récupérer le fichier CSV depuis l'API
-            async function fetchCsvData() {
-            const csvUrl = '/.netlify/functions/getCsvFromFtp.js';  // URL de votre fonction serverless
+    document.addEventListener("DOMContentLoaded", async () => {
+        const tableContainer = document.getElementById("table-container");
+        try {
+            // Appeler la fonction serverless pour récupérer les données CSV
+            const response = await fetch("/.netlify/functions/getCsvFromFtp");
+            if (!response.ok) throw new Error("Erreur lors du chargement des données CSV");
+            
+            const csvData = await response.text(); // Lire les données CSV sous forme de chaîne
 
-            try {
-                const response = await fetch(csvUrl);  // Appel à l'API
-                if (!response.ok) {
-                    throw new Error("Erreur lors du chargement des données CSV");
-                }
-
-                const csvData = await response.text();  // Récupère le contenu du fichier CSV
-
-                // Appeler la fonction pour afficher le CSV dans la table HTML
-                displayCsvInTable(csvData);
-            } catch (error) {
-                console.error("Erreur :", error);
-                document.getElementById('table-container').textContent = "Impossible de charger les données.";
-            }
-        }
-
-        // Fonction pour afficher le CSV dans une table HTML
-        function displayCsvInTable(csvData) {
-            // Utilise CsvToHtmlTable pour afficher le CSV dans une table
+            // Passer les données CSV directement à CsvToHtmlTable
             CsvToHtmlTable.init({
-                csv_path: csvData,  // Passe les données CSV directement
+                csv_data: csvData, // Passer les données ici
                 element: "table-container",
-                allow_download: false,
-                csv_options: {
-                    separator: ";",
-                    delimiter: '"'
-                },
-                datatables_options: {
-                    paging: true
-                },
-                custom_formatting: [
-                    [0, CsvToHtmlTable.imageFormatter]
-                ]
+                csv_options: { separator: ";", delimiter: '"' },
+                datatables_options: { paging: true },
+                custom_formatting: [[0, CsvToHtmlTable.imageFormatter]],
             });
+        } catch (error) {
+            console.error("Erreur lors du chargement des données :", error);
+            tableContainer.textContent = "Impossible de charger les données.";
         }
-
-        // Appel de la fonction pour récupérer et afficher le CSV au chargement de la page
-        document.addEventListener('DOMContentLoaded', fetchCsvData);
+});
 
         /*
             // Appeler la fonction pour générer le tableau HTML avec les données CSV
