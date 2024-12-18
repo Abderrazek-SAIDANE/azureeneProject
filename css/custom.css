@@ -28,12 +28,12 @@ h1 {
   color: rgb(8, 22, 221);
 }
 
-#logo img { width: 170px; }
+#logo img { width: 100px; }
 
 img {
   max-width: 100%; /* L'image ne dépassera pas la largeur de son conteneur */
   height: auto; /* Maintient les proportions de l'image */
-  width: auto;
+  /*width: auto;*/ 
   
 }
 
@@ -45,6 +45,7 @@ img {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
 }
+
 .info h4 {
   margin: 0 0 5px;
   color: #777;

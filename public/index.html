@@ -39,21 +39,38 @@
     
 
     <script>
-        CsvToHtmlTable.init({
-            csv_path: "data/test4.csv",
-            element: "table-container",
-            allow_download: false,
-            csv_options: {
-                separator: ";",
-                delimiter: '"'
-            },
-            datatables_options: {
-                paging: true
-            },
-            custom_formatting: [
-                [0, CsvToHtmlTable.imageFormatter]
-            ]
-        });
+        document.addEventListener("DOMContentLoaded", async () => {
+        const ratesContainer = document.getElementById("rates-container");
+
+        try {
+            // Appel à la fonction serverless pour récupérer le fichier CSV
+            const response = await fetch("/.netlify/functions/getRates");
+            if (!response.ok) throw new Error("Erreur lors du chargement des données");
+
+            const csvData = await response.text(); // Récupère le contenu CSV brut
+
+            // Appeler la fonction pour générer le tableau HTML avec les données CSV
+                CsvToHtmlTable.init({
+                    csv_path: csvData, // Vous passez les données CSV directement
+                    //csv_path: "data/test4.csv",
+                    element: "table-container",
+                    allow_download: false,
+                    csv_options: {
+                        separator: ";",
+                        delimiter: '"'
+                    },
+                    datatables_options: {
+                        paging: true
+                    },
+                    custom_formatting: [
+                        [0, CsvToHtmlTable.imageFormatter]
+                    ]
+                });
+            } catch (error) {
+        console.error("Erreur :", error);
+        ratesContainer.textContent = "Impossible de charger les taux.";
+    }
+});
     </script>
 </body>
 

@@ -26,6 +26,7 @@ CsvToHtmlTable = {
         // Chargement et traitement du fichier CSV
         $.when($.get(csv_path)).then(
             function (data) {
+                
                 var csvData = $.csv.toArrays(data, csv_options);
                 // Création du header de la table
                 var $tableHead = $("<thead></thead>");
