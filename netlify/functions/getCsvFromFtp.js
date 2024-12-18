@@ -15,7 +15,7 @@ async function getCsvFromFtp() {
     });
 
     // Téléchargez le fichier
-    const fileData = await client.downloadToBuffer(Buffer.alloc(0), "./htdocs/test2.csv"); // Chemin du fichier FTP
+    const fileData = await client.downloadTo(Buffer.alloc(0), "./htdocs/test2.csv"); // Chemin du fichier FTP
 
     return fileData.toString("utf-8");  // Retourne le contenu du fichier CSV en tant que texte
   } catch (err) {

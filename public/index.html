@@ -21,7 +21,7 @@
             <main class="row">
                 <div class="col">
                     <header>
-                        <img src="data/azurennePicture.jpg" alt="logo" width="400" >
+                        <img src="../data/azurennePicture.jpg" alt="logo" width="400" >
                     </header>
                     <br><h1>Azuréenne de change</h1>
                     <div id="table-container"></div>
@@ -39,7 +39,7 @@
     <script>    
             // Fonction pour récupérer le fichier CSV depuis l'API
             async function fetchCsvData() {
-            const csvUrl = '/.netlify/functions/getCsvFromFtp';  // URL de votre fonction serverless
+            const csvUrl = '/.netlify/functions/getCsvFromFtp.js';  // URL de votre fonction serverless
 
             try {
                 const response = await fetch(csvUrl);  // Appel à l'API
