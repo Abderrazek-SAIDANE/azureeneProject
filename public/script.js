@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
     try {
       // Appel à la fonction serverless pour récupérer le fichier
-      const response = await fetch("/.netlify/functions/getRates");
+      const response = await fetch("/.netlify/functions/getCsvFromFtp");
       if (!response.ok) throw new Error("Erreur lors du chargement des données");
   
       const data = await response.text();

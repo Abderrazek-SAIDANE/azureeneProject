@@ -26,7 +26,7 @@ CsvToHtmlTable = {
         // Chargement et traitement du fichier CSV
         $.when($.get(csv_path)).then(
             function (data) {
-                
+
                 var csvData = $.csv.toArrays(data, csv_options);
                 // Création du header de la table
                 var $tableHead = $("<thead></thead>");
@@ -48,7 +48,7 @@ CsvToHtmlTable = {
                         // Utilisation de templates personnalisés si disponibles
                         var cellTemplateFunc = customTemplates[colIdx];
                         if (cellTemplateFunc) {
-                            $tableBodyRowTd.append($("<td id='Drapeau'></td>")).html(cellTemplateFunc("css/images/"+csvData[rowIdx][colIdx+1]+".jpg", rowIdx, colIdx));
+                            $tableBodyRowTd.append($("<td id='Drapeau'></td>")).html(cellTemplateFunc("../css/images/"+csvData[rowIdx][colIdx+1]+".jpg", rowIdx, colIdx));
                         } else {
                             $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
                         }

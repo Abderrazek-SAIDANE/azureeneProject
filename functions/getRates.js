@@ -1,8 +1,9 @@
-const ftp = require("basic-ftp");
+const ftp = require('basic-ftp');  // Import de la bibliothèque FTP
 
-exports.handler = async function () {
-  const client = new ftp.Client();
-  client.ftp.verbose = true; // Activez les logs si besoin
+// Fonction pour récupérer le fichier CSV depuis le serveur FTP
+async function getCsvFromFtp() {
+    const client = new ftp.Client();   // Création d'un client FTP
+    client.ftp.verbose = true;          // Active le mode verbose pour plus de logs
 
   try {
     // Accédez au serveur FTP
@@ -14,21 +15,30 @@ exports.handler = async function () {
     });
 
     // Téléchargez le fichier
-    const stream = await client.downloadToBuffer("./htdocs/test2.csv"); // Chemin du fichier FTP
+    const fileData = await client.downloadToBuffer(Buffer.alloc(0), "./htdocs/test2.csv"); // Chemin du fichier FTP
 
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/xml" }, // Ou "application/csv" si c'est un CSV
-      body: stream.toString() // Renvoie le contenu du fichier
-    };
-
+    return fileData.toString("utf-8");  // Retourne le contenu du fichier CSV en tant que texte
   } catch (err) {
-    console.error(err);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Erreur lors de l'accès au serveur FTP" })
-    };
-  } finally {
-    client.close();
-  }
+    console.error("Erreur FTP:", err);
+        throw new Error("Impossible de récupérer le fichier depuis le serveur FTP.");
+    } finally {
+        client.close();  // Ferme la connexion FTP après l'opération
+    }
+
+}
+
+// Fonction API pour exposer le contenu du fichier CSV
+module.exports.handler = async (event) => {
+    try {
+        const csvData = await getCsvFromFtp();  // Appel de la fonction pour obtenir les données CSV
+        return {
+            statusCode: 200,
+            body: csvData,  // Envoie le contenu CSV dans la réponse
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: "Erreur serveur", error }),
+        };
+    }
 };
