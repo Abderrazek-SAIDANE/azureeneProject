@@ -1,4 +1,5 @@
 const ftp = require('basic-ftp');  // Import de la bibliothèque FTP
+const { Writable } = require('stream');
 
 // Fonction pour récupérer le fichier CSV depuis le serveur FTP
 async function getCsvFromFtp() {
@@ -15,16 +16,27 @@ async function getCsvFromFtp() {
     });
 
     // Téléchargez le fichier
-    const fileData = await client.downloadTo(Buffer.alloc(0), "./htdocs/test2.csv"); // Chemin du fichier FTP
+    const filePath = "./htdocs/test.csv"; // Chemin du fichier FTP
+    let data = "";
 
-    return fileData.toString("utf-8");  // Retourne le contenu du fichier CSV en tant que texte
-  } catch (err) {
+    // Flux de téléchargement
+    const writableStream = new Writable({
+        write(chunk, encoding, callback) {
+            data += chunk.toString(); // Accumuler les données dans une chaîne
+            callback();
+        },
+    });
+
+    // Télécharger le fichier dans le flux
+    await client.downloadTo(writableStream, filePath);
+
+    return data; // Retourne les données sous forme de chaîne
+} catch (err) {
     console.error("Erreur FTP:", err);
-        throw new Error("Impossible de récupérer le fichier depuis le serveur FTP.");
-    } finally {
-        client.close();  // Ferme la connexion FTP après l'opération
-    }
-
+    throw new Error("Impossible de récupérer le fichier depuis le serveur FTP.");
+} finally {
+    client.close(); // Ferme la connexion FTP
+}
 }
 
 // Fonction API pour exposer le contenu du fichier CSV
