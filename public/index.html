@@ -40,44 +40,40 @@
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
         try {
-            // Appeler la fonction serverless pour récupérer les données CSV
-            const response = await fetch("/.netlify/functions/getCsvFromFtp");
-            if (!response.ok) throw new Error("Erreur lors du chargement des données CSV");
-            
-            const csvData = await response.text(); // Lire les données CSV sous forme de chaîne
+            const responseJson = await fetch("/.netlify/functions/getJsonFromApi");
+            if (!responseJson.ok) throw new Error("Erreur lors du chargement des données");
 
-            // Passer les données CSV directement à CsvToHtmlTable
-            CsvToHtmlTable.init({
-                csv_data: csvData, // Passer les données ici
-                element: "table-container",
-                csv_options: { separator: ";", delimiter: '"' },
-                datatables_options: { paging: true },
-                custom_formatting: [[0, CsvToHtmlTable.imageFormatter]],
-            });
-        } catch (error) {
-            console.error("Erreur lors du chargement des données :", error);
-            tableContainer.textContent = "Impossible de charger les données.";
-        }
+            const dataJson = await responseJson.json(); // Récupération des données JSON
+            const data = dataJson.Data;
+            const header = Object.keys(data[0]);
+
+// Transformation des données JSON en CSV si nécessaire
+// Exemple : si les données JSON sont sous forme de tableau d'objets
+const csvData = data.map(item => Object.values(item).join(';')).join('\n');
+console.log("CSV Data: ", header+csvData); // Juste pour vérifier le format CSV
+
+// Passer les données CSV dans la fonction de génération du tableau HTML
+CsvToHtmlTable.init({
+    csv_path: header+csvData, // Utilisez les données CSV générées depuis le JSON
+    element: "table-container",
+    allow_download: false,
+    csv_options: {
+        separator: ";",
+        delimiter: '\n'
+    },
+    datatables_options: {
+        paging: true
+    },
+    custom_formatting: [
+        [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
+    ]
 });
 
-        /*
-            // Appeler la fonction pour générer le tableau HTML avec les données CSV
-                CsvToHtmlTable.init({
-                    //csv_path: csvData, // Vous passez les données CSV directement
-                    csv_path: "../data/test4.csv",
-                    element: "table-container",
-                    allow_download: false,
-                    csv_options: {
-                        separator: ";",
-                        delimiter: '"'
-                    },
-                    datatables_options: {
-                        paging: true
-                    },
-                    custom_formatting: [
-                        [0, CsvToHtmlTable.imageFormatter]
-                    ]
-                });*/
+} catch (error) {
+console.error("Erreur :", error);
+ratesContainer.textContent = "Impossible de charger les taux.";
+}
+});
     </script>
 </body>
 
