@@ -53,7 +53,7 @@ CsvToHtmlTable = {
                 // Utilisation de templates personnalisés si disponibles
                 var cellTemplateFunc = customTemplates[colIdx];
                 if (cellTemplateFunc) {
-                    $tableBodyRowTd.html(cellTemplateFunc("../images/"+csvData[rowIdx][colIdx+2]+".jpg", rowIdx, colIdx));
+                    $tableBodyRowTd.html(cellTemplateFunc("https://app.currencyxchanger.ca/Content/Flags-Mini/"+csvData[rowIdx][colIdx+2]+".JPG", rowIdx, colIdx));
                 } else {
                     $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
                 }
