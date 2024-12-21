@@ -30,11 +30,23 @@ function getNumberOfTabs() {
 
 // Fonction pour faire défiler les onglets
 function nextTab() {
+    let etat = false;
+    if(currentTab+1 == getNumberOfTabs()){
+        etat = true
+        location.reload();
+    }
     currentTab = (currentTab + 1) % getNumberOfTabs(); // Passer à l'onglet suivant en boucle (4 onglets dans l'exemple)
     const tabLink = getTabByIndex(currentTab); // Sélectionner l'onglet via XPath
     if (tabLink) {
         tabLink.click(); // Simuler un clic sur l'onglet suivant
         showTab(currentTab); // Afficher l'onglet
     }
+    if(etat === true){
+        location.reload();
+        //etat = false
+    }
+    
 }
+
+
 
