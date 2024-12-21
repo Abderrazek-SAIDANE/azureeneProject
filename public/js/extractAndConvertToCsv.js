@@ -13,7 +13,7 @@ function extractAndConvertToCsv(jsonData) {
 
     // Extraire les en-têtes du CSV (les clés du premier objet), en excluant 'FromCurrencyFlag' et 'ToCurrencyFlag'
     const headers = Object.keys(dataArray[0]).filter(header => 
-        header !== "FromCurrencyFlag" && header !== "ToCurrencyFlag"
+        header !== "FromCurrencyFlag" && header !== "ToCurrencyFlag" && header != "InverseRound" && header != "DirectRound" && header != "SequenceOrder" && header != "FromCurrency" && header != "ToCurrency"
     );
 
     // Tableau pour stocker les lignes CSV
