@@ -33,6 +33,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="./js/csv_to_html_table.js"></script>
     <script src="./js/jquery.csv.min.js"></script>
+    <script src="./js/extractAndConvertToCsv.js"></script>
 
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
@@ -42,22 +43,21 @@
             if (!responseJson.ok) throw new Error("Erreur lors du chargement des données");
 
             const dataJson = await responseJson.json(); // Récupération des données JSON
-            const data = dataJson.Data;
-            const header = Object.keys(data[0]);
+            const csvRows = extractAndConvertToCsv(dataJson);
 
 // Transformation des données JSON en CSV si nécessaire
 // Exemple : si les données JSON sont sous forme de tableau d'objets
-const csvData = data.map(item => Object.values(item).join(';')).join('\n');
-console.log("CSV Data: ", header+csvData); // Juste pour vérifier le format CSV
+//const csvData = data.map(item => Object.values(item).join(';')).join('\n');
+//console.log("CSV Data: ", headers+csvData); // Juste pour vérifier le format CSV
 
 // Passer les données CSV dans la fonction de génération du tableau HTML
 CsvToHtmlTable.init({
-    csv_path: header+csvData, // Utilisez les données CSV générées depuis le JSON
+    csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
     element: "table-container",
     allow_download: false,
     csv_options: {
         separator: ";",
-        delimiter: '\n'
+        delimiter: "\n"
     },
     datatables_options: {
         paging: true
