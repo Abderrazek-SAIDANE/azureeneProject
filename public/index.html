@@ -34,6 +34,7 @@
     <script src="./js/csv_to_html_table.js"></script>
     <script src="./js/jquery.csv.min.js"></script>
     <script src="./js/extractAndConvertToCsv.js"></script>
+    <script src="./js/navigation.js"></script>
 
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
@@ -45,67 +46,66 @@
             const dataJson = await responseJson.json(); // Récupération des données JSON
             const csvRows = extractAndConvertToCsv(dataJson);
 
-// Transformation des données JSON en CSV si nécessaire
-// Exemple : si les données JSON sont sous forme de tableau d'objets
-//const csvData = data.map(item => Object.values(item).join(';')).join('\n');
-//console.log("CSV Data: ", headers+csvData); // Juste pour vérifier le format CSV
+            // Passer les données CSV dans la fonction de génération du tableau HTML
+            CsvToHtmlTable.init({
+                csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
+                element: "table-container",
+                allow_download: false,
+                csv_options: {
+                    separator: ";",
+                    delimiter: '"'
+                },
+                datatables_options: {
+                    paging: true
+                },
+                custom_formatting: [
+                    [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
+                ]
+            });
 
-// Passer les données CSV dans la fonction de génération du tableau HTML
-CsvToHtmlTable.init({
-    csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
-    element: "table-container",
-    allow_download: false,
-    csv_options: {
-        separator: ";",
-        delimiter: '"'
-    },
-    datatables_options: {
-        paging: true
-    },
-    custom_formatting: [
-        [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
-    ]
-});
-
-} catch (error) {
-console.error("Erreur :", error);
-ratesContainer.textContent = "Impossible de charger les taux.";
-}
-});
+        } catch (error) {
+        console.error("Erreur :", error);
+        ratesContainer.textContent = "Impossible de charger les taux.";
+        }
+    });
     </script>
 
-<!--<script>
-    // Rafraîchissement automatique toutes les 60 secondes
-    setInterval(function() {
-        location.reload(); // Recharge la page
-    }, 60000); // 60 secondes
-</script>-->
-<script>
-    function refreshAt10AM() {
-    // Obtenir la date actuelle
-    const now = new Date();
-    const targetTime = new Date();
 
-    // Définir l'heure cible à 10h00 du matin aujourd'hui
-    targetTime.setHours(20, 12, 0, 0);
+    <script>
+    let currentTab = 0;
+    // Initialiser le premier onglet
+    showTab(currentTab);
 
-    // Si l'heure actuelle est déjà après 10h00, définir la cible pour demain à 10h00
-    if (now.getTime() > targetTime.getTime()) {
-        targetTime.setDate(now.getDate() + 1);
+    // Faire défiler les onglets toutes les 5 secondes
+    setInterval(nextTab, 10000); // 5000 ms = 5 secondes
+    </script>
+
+    <script>
+        function refreshAt10AM() {
+        // Obtenir la date actuelle
+        const now = new Date();
+        const targetTime = new Date();
+
+        // Définir l'heure cible à 10h00 du matin aujourd'hui
+        targetTime.setHours(20, 12, 0, 0);
+
+        // Si l'heure actuelle est déjà après 10h00, définir la cible pour demain à 10h00
+        if (now.getTime() > targetTime.getTime()) {
+            targetTime.setDate(now.getDate() + 1);
+        }
+
+        // Calculer le délai jusqu'à 10h00 du matin
+        const timeToWait = targetTime.getTime() - now.getTime();
+
+        // Attendre jusqu'à 10h00 et recharger la page
+        setTimeout(function() {
+            location.reload(); // Recharge la page
+            refreshAt10AM();   // Appelle à nouveau la fonction pour qu'elle s'exécute chaque jour
+        }, timeToWait);
     }
 
-    // Calculer le délai jusqu'à 10h00 du matin
-    const timeToWait = targetTime.getTime() - now.getTime();
-
-    // Attendre jusqu'à 10h00 et recharger la page
-    setTimeout(function() {
-        location.reload(); // Recharge la page
-        refreshAt10AM();   // Appelle à nouveau la fonction pour qu'elle s'exécute chaque jour
-    }, timeToWait);
-}
-
-    refreshAt10AM(); // Lancer la fonction
-</script>
+        refreshAt10AM(); // Lancer la fonction
+    </script>
 
 
 </body>
