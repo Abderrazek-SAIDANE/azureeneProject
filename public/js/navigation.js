@@ -20,9 +20,17 @@ function showTab(tabIndex) {
     }
 }
 
+// Fonction pour récupérer le nombre d'onglets
+function getNumberOfTabs() {
+    const xpath = "//div[contains(@class,'dataTables_paginate')]/span/a"; // XPath pour sélectionner tous les éléments <li> (les onglets)
+    const result = document.evaluate(xpath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    return result.snapshotLength; // Retourner le nombre d'onglets trouvés
+}
+
+
 // Fonction pour faire défiler les onglets
 function nextTab() {
-    currentTab = (currentTab + 1) % 4; // Passer à l'onglet suivant en boucle (4 onglets dans l'exemple)
+    currentTab = (currentTab + 1) % getNumberOfTabs(); // Passer à l'onglet suivant en boucle (4 onglets dans l'exemple)
     const tabLink = getTabByIndex(currentTab); // Sélectionner l'onglet via XPath
     if (tabLink) {
         tabLink.click(); // Simuler un clic sur l'onglet suivant
