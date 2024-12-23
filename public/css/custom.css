@@ -40,12 +40,12 @@ a:hover {
 }
 
 table.dataTable {
-  background-color: #1e1e1e;
-  border-color: rgb(163, 178, 0);
+  background-color: #ffffff;
+  border-color: rgb(0, 0, 0);
 }
 
 table.dataTable thead th {
-  background-color: #333;
+  background-color: #ffffff;
   color: var(--text-color);
 }
 
@@ -78,7 +78,7 @@ table.dataTable tbody tr:hover {
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
   background-color: var(--secondary-color);
-  color: white;
+  color: var(--primary-color);
   border-color: var(--secondary-color);
 }
 

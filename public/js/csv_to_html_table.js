@@ -23,12 +23,6 @@ CsvToHtmlTable = {
         var $containerElement = $("#" + el);
         $containerElement.empty().append($table);
 
-        $(document).ready(function () {
-            $('#table-container-table').DataTable({
-                pageLength: 25 // Définit le nombre d'éléments par défaut à 25
-            });
-        });
-
         
         // Si csvData est fourni directement
         if (csvData) {
