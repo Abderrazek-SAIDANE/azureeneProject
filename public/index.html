@@ -36,6 +36,14 @@
     <script src="./js/extractAndConvertToCsv.js"></script>
     <script src="./js/navigation.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('select[name="your-table-id_length"]').value = 25;
+            document.querySelector('select[name="your-table-id_length"]').dispatchEvent(new Event('change'));
+        });
+    </script>
+
+
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
@@ -62,6 +70,10 @@
                     [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
                 ]
             });
+
+            document.querySelector('select[name="table-container-table_length"]').value = 25;
+            document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
+
 
         } catch (error) {
         console.error("Erreur :", error);
