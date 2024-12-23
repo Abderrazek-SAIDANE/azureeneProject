@@ -33,7 +33,7 @@ function nextTab() {
     let etat = false;
     if(currentTab+1 == getNumberOfTabs()){
         etat = true
-        location.reload();
+        //location.reload();
     }
     currentTab = (currentTab + 1) % getNumberOfTabs(); // Passer à l'onglet suivant en boucle (4 onglets dans l'exemple)
     const tabLink = getTabByIndex(currentTab); // Sélectionner l'onglet via XPath

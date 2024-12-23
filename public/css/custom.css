@@ -1,13 +1,13 @@
 :root {
-  --primary-color: #858700; /* Couleur principale */
+  --primary-color: #002487; /* Couleur principale */
   --secondary-color: #6366f1; /* Couleur secondaire */
-  --text-color: #ffffff; /* Couleur du texte */
+  --text-color: #000000; /* Couleur du texte */
   --hover-color: #444; /* Couleur au survol */
 }
 
 body {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #ffffff;
+  color: #000000;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
