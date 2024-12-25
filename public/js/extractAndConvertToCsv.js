@@ -44,7 +44,8 @@ function extractAndConvertToCsv(jsonData) {
         throw new Error("Aucune devise restante après filtrage !");
     }
 
-    const prioritizedCurrencies = ["USD", "GBP"];
+    const prioritizedCurrencies = ["USD", "GBP", "CHF", "CAD", "JPY", "AUD",
+                                   "SEK", "NOK", "DKK", "MAD"];
 
     // Trier les données :
     // 1. Les devises prioritaires en premier, dans l'ordre spécifié.
