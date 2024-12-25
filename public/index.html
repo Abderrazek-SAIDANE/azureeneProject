@@ -36,14 +36,6 @@
     <script src="./js/extractAndConvertToCsv.js"></script>
     <script src="./js/navigation.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('select[name="your-table-id_length"]').value = 25;
-            document.querySelector('select[name="your-table-id_length"]').dispatchEvent(new Event('change'));
-        });
-    </script>
-
-
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
@@ -82,6 +74,12 @@
     });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('select[name="your-table-id_length"]').value = 25;
+            document.querySelector('select[name="your-table-id_length"]').dispatchEvent(new Event('change'));
+        });
+    </script>
 
     <script>
     let currentTab = 0;
@@ -90,10 +88,6 @@
 
     // Faire défiler les onglets toutes les 5 secondes
     setInterval(nextTab, 10000); // 5000 ms = 5 secondes
-    </script>
-
-    <script>
-        refreshAt10AM(); // Lancer la fonction
     </script>
 
 
