@@ -52,67 +52,31 @@ function extractAndConvertToCsv(jsonData) {
         }
     });
 
+    // Devise à exclure
+    const excludedCurrencies = ["EUR", "XAU"];
+
+    // Appelle la fonction pour filtrer et trier
+    const result = filterAndSortCurrencies(csvRows, excludedCurrencies);
+
+
     // Retourner les lignes CSV sous forme de chaîne
     return csvRows.join("\n");
 }
 
+function filterAndSortCurrencies(csvRows, excludedCurrencies) {
+    if (!csvRows || !Array.isArray(csvRows)) {
+        throw new Error("Les données fournies sont invalides ou ne sont pas un tableau.");
+    }
 
-// Exemple d'appel
-const apiResponse = {
-    "Message": null,
-    "Success": true,
-    "Data": [
-        {
-            "BuyRate": 0.23900,
-            "InverseBuyRate": 4.1841,
-            "InverseSellRate": 3.0331,
-            "SellRate": 0.32970,
-            "FromCurrency": "TND",
-            "ToCurrency": "EUR",
-            "FromCurrencyFlag": "https://app.currencyxchanger.ca/Content/CountryFlags/TND.png",
-            "ToCurrencyFlag": "https://app.currencyxchanger.ca/Content/CountryFlags/EUR.png",
-            "CurrencyAlias": "TND",
-            "Country": "Tunisia",
-            "SequenceOrder": null,
-            "DirectRound": 5,
-            "InverseRound": 4
-        },
-        {
-            "BuyRate": 1.11000,
-            "InverseBuyRate": 0.9009,
-            "InverseSellRate": 0.7752,
-            "SellRate": 1.29000,
-            "FromCurrency": "GBP",
-            "ToCurrency": "EUR",
-            "FromCurrencyFlag": "https://app.currencyxchanger.ca/Content/CountryFlags/GBP.png",
-            "ToCurrencyFlag": "https://app.currencyxchanger.ca/Content/CountryFlags/EUR.png",
-            "CurrencyAlias": "GBP",
-            "Country": "United Kingdom",
-            "SequenceOrder": null,
-            "DirectRound": 5,
-            "InverseRound": 4
-        },
-        {
-            "BuyRate": 0.00673,
-            "InverseBuyRate": 148.5884,
-            "InverseSellRate": 134.4086,
-            "SellRate": 0.00744,
-            "FromCurrency": "DZD",
-            "ToCurrency": "EUR",
-            "FromCurrencyFlag": "https://app.currencyxchanger.ca/Content/CountryFlags/DZD.png",
-            "ToCurrencyFlag": "https://app.currencyxchanger.ca/Content/CountryFlags/EUR.png",
-            "CurrencyAlias": "DZD",
-            "Country": "Algeria",
-            "SequenceOrder": null,
-            "DirectRound": 5,
-            "InverseRound": 4
-        }
-    ]
-};
+    // Filtrer les devises en excluant celles spécifiées
+    const filteredData = csvRows.filter(item => 
+        !excludedCurrencies.includes(item.CurrencyAlias)
+    );
 
-try {
-    const csvData = extractAndConvertToCsv(apiResponse);
-    console.log(csvData); // Afficher le CSV
-} catch (error) {
-    console.error("Erreur :", error.message); // Gérer l'erreur
+    // Trier par ordre alphabétique (par 'FromCurrency' dans cet exemple)
+    filteredData.sort((a, b) => a.FromCurrency.localeCompare(b.FromCurrency));
+
+    // Retourner les données filtrées et triées
+    return filteredData;
 }
+;
