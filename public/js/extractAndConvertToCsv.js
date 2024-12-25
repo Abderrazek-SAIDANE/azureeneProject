@@ -52,31 +52,8 @@ function extractAndConvertToCsv(jsonData) {
         }
     });
 
-    const excludedCurrencies = ["EUR", "GOLD", "DZD"];
-
-    csvRows = filterAndSortCurrencies(csvRows, excludedCurrencies)
-
     // Retourner les lignes CSV sous forme de chaîne
     return csvRows.join("\n");
-}
-
-
-function filterAndSortCurrencies(jsonData, excludedCurrencies) {
-    if (!jsonData || !jsonData.Data || !Array.isArray(jsonData.Data)) {
-        throw new Error("Le format JSON est invalide ou 'Data' est manquant.");
-    }
-
-    // Filtrer les devises en excluant celles spécifiées
-    const filteredData = jsonData.Data.filter(item => 
-        !excludedCurrencies.includes(item.FromCurrency) &&
-        !excludedCurrencies.includes(item.ToCurrency)
-    );
-
-    // Trier par ordre alphabétique (par 'FromCurrency' dans cet exemple)
-    filteredData.sort((a, b) => a.FromCurrency.localeCompare(b.FromCurrency));
-
-    // Retourner les données filtrées et triées
-    return filteredData;
 }
 
 
