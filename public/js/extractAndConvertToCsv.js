@@ -31,52 +31,58 @@ function extractAndConvertToCsv(jsonData) {
     // Ajouter les en-têtes au CSV
     csvRows.push(headers.join(";"));
 
-    // Parcourir chaque objet et ajouter ses valeurs
-    dataArray.forEach(obj => {
-        try{
-            const values = headers.map(header => {
-                let value = obj[header] || ""; // Si la valeur est undefined ou null, la remplacer par une chaîne vide
+    // Liste des devises à exclure
+    const excludedCurrencies = ["EUR", "XAU", "DZD"];
 
-                // Si la valeur est une chaîne qui contient des caractères spéciaux, l'échapper
-                if (typeof value === "string" && (value.includes(";") || value.includes('"') || value.includes("\n"))) {
-                    value = `"${value.replace(/"/g, '""')}"`; // Remplacer les guillemets par des guillemets échappés
-                }
-                return value;
-            });
+    // Filtrer les données pour exclure les devises non souhaitées
+    const filteredData = dataArray.filter(obj => 
+        !excludedCurrencies.includes(obj.CurrencyAlias)
+    );
 
-            csvRows.push(values.join(";")); // Ajouter la ligne au CSV
-        }catch(error){
-            if(obj == "Flag"){
-                csvRows.push("");
-            }
+    // Vérification si les données filtrées sont vides
+    if (filteredData.length === 0) {
+        throw new Error("Aucune devise restante après filtrage !");
+    }
+
+    const prioritizedCurrencies = ["USD", "GBP"];
+
+    // Trier les données :
+    // 1. Les devises prioritaires en premier, dans l'ordre spécifié.
+    // 2. Les autres devises en ordre alphabétique.
+    const sortedData = filteredData.sort((a, b) => {
+        const aPriority = prioritizedCurrencies.indexOf(a.CurrencyAlias);
+        const bPriority = prioritizedCurrencies.indexOf(b.CurrencyAlias);
+
+        if (aPriority !== -1 && bPriority !== -1) {
+            // Si les deux devises sont prioritaires, garder leur ordre dans prioritizedCurrencies
+            return aPriority - bPriority;
+        } else if (aPriority !== -1) {
+            // Si seule la devise 'a' est prioritaire, elle passe avant
+            return -1;
+        } else if (bPriority !== -1) {
+            // Si seule la devise 'b' est prioritaire, elle passe avant
+            return 1;
+        } else {
+            // Si aucune n'est prioritaire, trier par ordre alphabétique de leur alias
+            return a.CurrencyAlias.localeCompare(b.CurrencyAlias);
         }
     });
 
-    // Devise à exclure
-    const excludedCurrencies = ["EUR", "XAU"];
+    // Parcourir chaque objet filtré et ajouter ses valeurs
+    sortedData.forEach(obj => {
+        const values = headers.map(header => {
+            let value = obj[header] || ""; // Si la valeur est undefined ou null, la remplacer par une chaîne vide
 
-    // Appelle la fonction pour filtrer et trier
-    const result = filterAndSortCurrencies(csvRows, excludedCurrencies);
+            // Si la valeur est une chaîne qui contient des caractères spéciaux, l'échapper
+            if (typeof value === "string" && (value.includes(";") || value.includes('"') || value.includes("\n"))) {
+                value = `"${value.replace(/"/g, '""')}"`; // Remplacer les guillemets par des guillemets échappés
+            }
+            return value;
+        });
 
+        csvRows.push(values.join(";")); // Ajouter la ligne au CSV
+    });
 
     // Retourner les lignes CSV sous forme de chaîne
     return csvRows.join("\n");
-}
-
-function filterAndSortCurrencies(csvRows, excludedCurrencies) {
-    if (!csvRows || !Array.isArray(csvRows)) {
-        throw new Error("Les données fournies sont invalides ou ne sont pas un tableau.");
-    }
-
-    // Filtrer les devises en excluant celles spécifiées
-    const filteredData = csvRows.filter(item => 
-        !excludedCurrencies.includes(item.CurrencyAlias)
-    );
-
-    // Trier par ordre alphabétique (par 'FromCurrency' dans cet exemple)
-    filteredData.sort((a, b) => a.FromCurrency.localeCompare(b.FromCurrency));
-
-    // Retourner les données filtrées et triées
-    return filteredData;
-}
-;
+};
