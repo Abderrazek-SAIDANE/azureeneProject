@@ -40,44 +40,41 @@
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
         try {
-                const response = await fetch('/.netlify/functions/getJsonFromAPI');
-                if (!response.ok) {
-                    throw new Error("Erreur lors de la récupération des taux de change.");
-                }
+            const response = await fetch("/.netlify/functions/getJsonFromApi");
+            if (!response.ok) {
+            throw new Error("Erreur lors de la récupération des taux de change.");
+        }
 
-                const { hasChanges, data } = await response.json();
+        const { hasChanges, data } = await response.json();
 
-                if (hasChanges) {
-                    // Passer les données CSV dans la fonction de génération du tableau HTML
-                    CsvToHtmlTable.init({
-                        csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
-                        element: "table-container",
-                        allow_download: false,
-                        csv_options: {
-                            separator: ";",
-                            delimiter: '"'
-                        },
-                        datatables_options: {
-                            paging: true
-                        },
-                        custom_formatting: [
-                            [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
-                        ]
-                    });
-                } else {
-                    console.log("Aucun changement détecté.");
-                }
-            } catch (error) {
-                console.error("Erreur lors de la vérification des mises à jour :", error);
-            }
+        if (hasChanges) {
+            // Passer les données CSV dans la fonction de génération du tableau HTML
+            CsvToHtmlTable.init({
+                csv_path: data.Data, // Utilisez les données CSV générées depuis le JSON
+                element: "table-container",
+                allow_download: false,
+                csv_options: {
+                    separator: ";",
+                    delimiter: '"'
+                },
+                datatables_options: {
+                    paging: true
+                },
+                custom_formatting: [
+                    [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
+                ]
+            });
+
+            document.querySelector('select[name="table-container-table_length"]').value = 25;
+            document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
+
+        } else {
+            console.log("Aucun changement détecté.");
+        }
+        } catch (error) {
+            console.error("Erreur lors de la vérification des mises à jour :", error);
+        }
     });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('select[name="your-table-id_length"]').value = 25;
-            document.querySelector('select[name="your-table-id_length"]').dispatchEvent(new Event('change'));
-        });
     </script>
 
     <script>
