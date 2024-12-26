@@ -36,41 +36,40 @@
     <script src="./js/extractAndConvertToCsv.js"></script>
     <script src="./js/navigation.js"></script>
 
-    <script>    
+    <script>
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
         try {
-            const responseJson = await fetch("/.netlify/functions/getJsonFromApi");
-            if (!responseJson.ok) throw new Error("Erreur lors du chargement des données");
+                const response = await fetch('/.netlify/functions/getJsonFromAPI');
+                if (!response.ok) {
+                    throw new Error("Erreur lors de la récupération des taux de change.");
+                }
 
-            const dataJson = await responseJson.json(); // Récupération des données JSON
-            const csvRows = extractAndConvertToCsv(dataJson);
+                const { hasChanges, data } = await response.json();
 
-            // Passer les données CSV dans la fonction de génération du tableau HTML
-            CsvToHtmlTable.init({
-                csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
-                element: "table-container",
-                allow_download: false,
-                csv_options: {
-                    separator: ";",
-                    delimiter: '"'
-                },
-                datatables_options: {
-                    paging: true
-                },
-                custom_formatting: [
-                    [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
-                ]
-            });
-
-            document.querySelector('select[name="table-container-table_length"]').value = 25;
-            document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
-
-
-        } catch (error) {
-        console.error("Erreur :", error);
-        ratesContainer.textContent = "Impossible de charger les taux.";
-        }
+                if (hasChanges) {
+                    // Passer les données CSV dans la fonction de génération du tableau HTML
+                    CsvToHtmlTable.init({
+                        csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
+                        element: "table-container",
+                        allow_download: false,
+                        csv_options: {
+                            separator: ";",
+                            delimiter: '"'
+                        },
+                        datatables_options: {
+                            paging: true
+                        },
+                        custom_formatting: [
+                            [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
+                        ]
+                    });
+                } else {
+                    console.log("Aucun changement détecté.");
+                }
+            } catch (error) {
+                console.error("Erreur lors de la vérification des mises à jour :", error);
+            }
     });
     </script>
 
