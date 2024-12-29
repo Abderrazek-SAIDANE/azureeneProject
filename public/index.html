@@ -35,6 +35,9 @@
             <main class="row">
                 <div class="col text-center">
                     <div id="table-container"></div>
+                    <!-- Afficher l'équivalent de 100$ en achat et vente -->
+                    <div id="usd-equivalent" style="margin-top: 30px; font-weight: bold; color: black; font-size: 18px; text-transform: uppercase; margin-top: 10px;">
+                        <!-- Les valeurs seront injectées ici -->
                 </div>
             </main>
         </div>
@@ -81,6 +84,8 @@
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
+        const usdEquivalentContainer = document.getElementById("usd-equivalent");
+
         try {
             const responseJson = await fetch("/.netlify/functions/getJsonFromApi");
             if (!responseJson.ok) throw new Error("Erreur lors du chargement des données");
@@ -106,6 +111,23 @@
                 ]
             });
 
+            // Trouver les taux d'achat et de vente du dollar (USD)
+            const usdPurchaseRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.BuyRate;
+            const usdSaleRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.SellRate;
+            if (usdPurchaseRate && usdSaleRate) {
+                // Calcul de l'équivalent de 100$ en achat et en vente
+                const purchaseAmount = (100 * usdPurchaseRate).toFixed(2);
+                const saleAmount = (100 * usdSaleRate).toFixed(2);
+
+                // Affichage de l'équivalent d'achat et de vente de 100$
+                usdEquivalentContainer.innerHTML = `
+                <p>Nous achetons 100$ pour ${purchaseAmount}€</p>
+                <p>Nous vendons 100$ pour ${saleAmount}€</p>
+            `;
+            } else {
+                usdEquivalentContainer.innerHTML = `<p>Impossible de récupérer les taux pour le dollar (USD).</p>`;
+            }
+
             document.querySelector('select[name="table-container-table_length"]').value = 25;
             document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
 
@@ -115,13 +137,6 @@
         ratesContainer.textContent = "Impossible de charger les taux.";
         }
     });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('select[name="your-table-id_length"]').value = 25;
-            document.querySelector('select[name="your-table-id_length"]').dispatchEvent(new Event('change'));
-        });
     </script>
 
     <script>
