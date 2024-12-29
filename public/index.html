@@ -22,10 +22,17 @@
                         <img src="./images/azurennePicture.jpg" alt="logo" width="400" >
                     </header>
                     <br><h1>Azuréenne de change</h1>
+                    <br><p id="current-date" style="font-weight: bold; color: black; font-size: 18px; text-transform: uppercase;"></p> <!-- Style personnalisé -->
+                    <br>
                     <div id="table-container"></div>
                 </div>
             </main>
         </div>
+
+        <footer id="footer" style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
+            <p id="current-time" style="font-weight: bold;"></p> <!-- Heure actuelle -->
+            <p>Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
+        </footer>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -36,6 +43,32 @@
     <script src="./js/extractAndConvertToCsv.js"></script>
     <script src="./js/navigation.js"></script>
 
+    <script>
+        // Script pour afficher la date courante
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateElement = document.getElementById('current-date');
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = `Cotation du ${today.toLocaleDateString('fr-FR', options)}`;
+        });
+
+        // Script pour afficher l'heure actuelle
+        function updateTime() {
+            const timeElement = document.getElementById('current-time');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            timeElement.textContent = `Heure actuelle : ${hours}:${minutes}:${seconds}`;
+        }
+
+        // Mettre à jour l'heure toutes les secondes
+        setInterval(updateTime, 1000);
+
+    </script>
+
+    
+    
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
