@@ -16,19 +16,28 @@
 </head>
 <body>
         <div class="container-fluid">
+            <!-- En-tête avec le logo, le nom du bureau de change, et la date de cotation -->
+            <header style="text-align: center; padding: 20px; background-color: #f8f9fa; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 60px;">
+                <!-- Logo (bloc séparé) -->
+                <img src="./images/azurennePicture.jpg" alt="logo" width="400" style="margin-bottom: 10px;">
+                
+                <!-- Nom du bureau de change sous le logo -->
+                <h1 style="margin-top: 0; font-size: 24px;">Azuréenne de Change</h1>
+                
+                <!-- Date de cotation sous le nom -->
+                <p id="current-date" style="font-weight: bold; color: black; font-size: 18px; text-transform: uppercase; margin-top: 10px;"></p>
+            </header>
+
+
+
+
+
             <main class="row">
-                <div class="col">
-                    <header>
-                        <img src="./images/azurennePicture.jpg" alt="logo" width="400" >
-                    </header>
-                    <br><h1>Azuréenne de change</h1>
-                    <br><p id="current-date" style="font-weight: bold; color: black; font-size: 18px; text-transform: uppercase;"></p> <!-- Style personnalisé -->
-                    <br>
+                <div class="col text-center">
                     <div id="table-container"></div>
                 </div>
             </main>
         </div>
-
         <footer id="footer" style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
             <p id="current-time" style="font-weight: bold;"></p> <!-- Heure actuelle -->
             <p>Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
@@ -89,7 +98,8 @@
                     delimiter: '"'
                 },
                 datatables_options: {
-                    paging: true
+                    paging: false,
+                    searching: false
                 },
                 custom_formatting: [
                     [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
