@@ -40,12 +40,6 @@ function nextTab() {
         tabLink.click(); // Simuler un clic sur l'onglet suivant
         showTab(currentTab); // Afficher l'onglet
     }
-    if(etat === true){
-        setInterval(fetchUpdatedRates(), 1000)
-        //location.reload();
-        //etat = false
-    }
-    
 }
 
 
