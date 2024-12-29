@@ -86,4 +86,16 @@ function extractAndConvertToCsv(jsonData) {
 
     // Retourner les lignes CSV sous forme de chaîne
     return csvRows.join("\n");
-};
+}
+
+const fetchCurrencyData = async () => {
+    try {
+        const response = await fetch("/.netlify/functions/getJsonFromApi");
+        const data = await response.json();
+        console.log(data); // Traitez les données comme nécessaire
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+    }
+    return data;
+}
+;

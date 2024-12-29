@@ -27,7 +27,6 @@ function getNumberOfTabs() {
     return result.snapshotLength; // Retourner le nombre d'onglets trouvés
 }
 
-
 // Fonction pour faire défiler les onglets
 function nextTab() {
     let etat = false;
@@ -41,11 +40,6 @@ function nextTab() {
         tabLink.click(); // Simuler un clic sur l'onglet suivant
         showTab(currentTab); // Afficher l'onglet
     }
-    if(etat === true){
-        location.reload();
-        //etat = false
-    }
-    
 }
 
 
