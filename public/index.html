@@ -25,7 +25,7 @@
                 <h1 style="margin-top: 0; font-size: 35px;">Azuréenne de Change</h1>
                 
                 <!-- Date de cotation sous le nom -->
-                <p id="current-date" style="font-weight: bold; color: black; font-size: 30px; text-transform: uppercase; margin-top: 20px; margin-bottom: 30px;"></p>
+                <p id="current-date" style="font-weight: bold; color: black; font-size: 30px; text-transform: uppercase; margin-top: 10px; margin-bottom: 10px;"></p>
             </header>
 
 
@@ -41,7 +41,7 @@
                 </div>
             </main>
         </div>
-        <footer id="footer" style="font-size: 35px; position: absolute; bottom: 10px; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
+        <footer id="footer" style="font-size: 35px; position: relative; bottom: 10px; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
             <p id="current-time" style="font-weight: bold;"></p> <!-- Heure actuelle -->
             <p style="font-weight: bold; text-transform: uppercase; color: #002487;">Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
         </footer>
@@ -103,8 +103,10 @@
                     delimiter: '"'
                 },
                 datatables_options: {
-                    paging: true,
-                    searching: false
+                    lengthMenu: [10, 20, 50, 100], // Permet de choisir d'autres options de pagination
+                    paging: true, // Active la pagination
+                    searching: true, // Active la recherche
+                    info: true // Affiche les informations sur le tableau
                 },
                 custom_formatting: [
                     [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
@@ -129,7 +131,7 @@
                 usdEquivalentContainer.innerHTML = `<p>Impossible de récupérer les taux pour le dollar (USD).</p>`;
             }
 
-            document.querySelector('select[name="table-container-table_length"]').value = 25;
+            document.querySelector('select[name="table-container-table_length"]').value = 20;
             document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
 
 
