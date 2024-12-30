@@ -42,7 +42,7 @@ function nextTab() {
         showTab(currentTab); // Afficher l'onglet
     }
     if(etat === true){
-        location.reload();
+        //location.reload();
         //etat = false
     }
     

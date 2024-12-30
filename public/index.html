@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=chrome">
-    <title>Tableau Exterieur</title>
+    <title>Tableau Interieur</title>
    
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
@@ -16,16 +16,35 @@
 </head>
 <body>
         <div class="container-fluid">
+            <!-- En-tête avec le logo, le nom du bureau de change, et la date de cotation -->
+            <header style="text-align: center; padding: 1px; background-color: #f8f9fa; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1px;">
+                <!-- Logo (bloc séparé) -->
+                <!--<img src="./images/azurennePicture.jpg" alt="logo" width="400" style="margin-bottom: 10px;">-->
+                
+                <!-- Nom du bureau de change sous le logo -->
+                <h1 style="margin-top: 0; font-size: 35px;font-weight: bold;">Azuréenne de Change</h1>
+                
+                <!-- Date de cotation sous le nom -->
+                <p id="current-date" style="font-weight: bold; color: black; font-size: 30px; text-transform: uppercase; margin-top: 20px; margin-bottom: 30px;"></p>
+            </header>
+
+
+
+
+
             <main class="row">
-                <div class="col">
-                    <header>
-                        <img src="./images/azurennePicture.jpg" alt="logo" width="400" >
-                    </header>
-                    <br><h1>Azuréenne de change</h1>
+                <div class="col text-center">
                     <div id="table-container"></div>
+                    <!-- Afficher l'équivalent de 100$ en achat et vente -->
+                    <div id="usd-equivalent" style="margin-top: 5px; font-weight: bold; color: black; font-size: 40px; text-transform: uppercase;">
+                        <!-- Les valeurs seront injectées ici -->
                 </div>
             </main>
         </div>
+        <footer id="footer" style="font-size: 35px; position: relative; bottom: 10px; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
+            <p id="current-time" style="font-weight: bold;"></p> <!-- Heure actuelle -->
+            <p style="font-weight: bold; text-transform: uppercase; color: #002487;">Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
+        </footer>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -36,9 +55,37 @@
     <script src="./js/extractAndConvertToCsv.js"></script>
     <script src="./js/navigation.js"></script>
 
+    <script>
+        // Script pour afficher la date courante
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateElement = document.getElementById('current-date');
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = `Cotation du ${today.toLocaleDateString('fr-FR', options)}`;
+        });
+
+        // Script pour afficher l'heure actuelle
+        function updateTime() {
+            const timeElement = document.getElementById('current-time');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            timeElement.textContent = `Heure actuelle : ${hours}:${minutes}:${seconds}`;
+        }
+
+        // Mettre à jour l'heure toutes les secondes
+        setInterval(updateTime, 1000);
+
+    </script>
+
+    
+    
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
         const tableContainer = document.getElementById("table-container");
+        const usdEquivalentContainer = document.getElementById("usd-equivalent");
+
         try {
             const responseJson = await fetch("/.netlify/functions/getJsonFromApi");
             if (!responseJson.ok) throw new Error("Erreur lors du chargement des données");
@@ -53,16 +100,34 @@
                 allow_download: false,
                 csv_options: {
                     separator: ";",
-                    delimiter: '"',
+                    delimiter: '"'
                 },
                 datatables_options: {
                     paging: true,
-                    searching : false
+                    searching: false
                 },
                 custom_formatting: [
                     [0, CsvToHtmlTable.imageFormatter] // Exemple pour formater une colonne avec des images
                 ]
             });
+
+            // Trouver les taux d'achat et de vente du dollar (USD)
+            const usdPurchaseRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.BuyRate;
+            const usdSaleRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.SellRate;
+            if (usdPurchaseRate && usdSaleRate) {
+                // Calcul de l'équivalent de 100$ en achat et en vente
+                const purchaseAmount = (100 * usdPurchaseRate).toFixed(2);
+                const saleAmount = (100 * usdSaleRate).toFixed(2);
+
+                // Affichage de l'équivalent d'achat et de vente de 100$
+                usdEquivalentContainer.innerHTML = `
+                <div class="marquee">
+                    <p>Nous achetons 100$ pour ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; Nous vendons 100$ pour ${saleAmount}€  &nbsp;&nbsp;&nbsp; We buy 100$ for ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; We Sell 100$ for ${saleAmount}€</p>
+                </div>
+            `;
+            } else {
+                usdEquivalentContainer.innerHTML = `<p>Impossible de récupérer les taux pour le dollar (USD).</p>`;
+            }
 
             document.querySelector('select[name="table-container-table_length"]').value = 25;
             document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
@@ -76,19 +141,12 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('select[name="your-table-id_length"]').value = 25;
-            document.querySelector('select[name="your-table-id_length"]').dispatchEvent(new Event('change'));
-        });
-    </script>
-
-    <script>
     let currentTab = 0;
     // Initialiser le premier onglet
     showTab(currentTab);
 
-    // Faire défiler les onglets toutes les 20 secondes
-    setInterval(nextTab, 20000);
+    // Faire défiler les onglets toutes les 60 secondes
+    setInterval(nextTab, 10000);
     </script>
 
 
