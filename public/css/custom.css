@@ -48,19 +48,19 @@ table.dataTable {
 table.dataTable thead th {
   background-color: #ffffff;
   color: var(--text-color);
-  font-size: 30px;
+  font-size: 20px;
 }
 
 table.dataTable tbody td {
   color: var(--text-color);
-  font-size: 30px;
+  font-size: 25px;
 }
 
 table.dataTable tbody tr:hover {
   background-color: var(--hover-color);
   transform: scale(1.01);
   transition: transform 0.2s ease, background-color 0.2s ease;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 /* Pagination */
