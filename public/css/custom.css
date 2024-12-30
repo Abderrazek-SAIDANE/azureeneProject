@@ -11,6 +11,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  text-align: center; /* Centre le texte horizontalement */
+  vertical-align: middle; /* Centre le texte verticalement */
 }
 
 header {
@@ -36,6 +38,14 @@ a {
   text-decoration: #000000;
 }
 
+td {
+  white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
+  word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
+  position: relative;
+  text-align: center; /* Centre le texte horizontalement */
+  vertical-align: center; /* Centre le texte verticalement */
+}
+
 a:hover {
   text-decoration: #000000;
 }
@@ -49,6 +59,11 @@ table.dataTable thead th {
   background-color: #ffffff;
   color: var(--text-color);
   font-size: 20px;
+  white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
+  word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
+  text-align: center; /* Centre le texte horizontalement */
+  vertical-align: middle; /* Centre le texte verticalement */
+
 }
 
 table.dataTable tbody td {
@@ -61,6 +76,8 @@ table.dataTable tbody tr:hover {
   transform: scale(1.01);
   transition: transform 0.2s ease, background-color 0.2s ease;
   font-size: 25px;
+  text-align: center; /* Centre le texte horizontalement */
+  vertical-align: middle; /* Centre le texte verticalement */
 }
 
 /* Pagination */
@@ -96,6 +113,8 @@ table.dataTable tbody tr:hover {
     line-height: 4; /* Ajuster la hauteur des lignes */
     padding: 10px 0; /* Ajouter de l'espace autour du texte */
     font-size: 30px;
+    text-align: center; /* Centre le texte horizontalement */
+    vertical-align: middle; /* Centre le texte verticalement */
   }
   
 
