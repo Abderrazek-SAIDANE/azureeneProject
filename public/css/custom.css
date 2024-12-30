@@ -57,7 +57,7 @@ table.dataTable tbody tr:nth-child(odd) {
 }
 
 table.dataTable tbody tr:nth-child(even) {
-  background-color: #dbd5d5; /* Couleur pour les lignes paires */
+  background-color: #aad1f8; /* Couleur pour les lignes paires */
 }
 
 /* Augmenter le contraste entre les lignes */

@@ -78,7 +78,7 @@ CsvToHtmlTable = {
             img.attr("class", "flag")
             img.attr("alt", "Image");
             img.css({
-                width: "80px",
+                width: "100px",
                 height: "auto",
                 borderRadius: "5px",
                 
