@@ -121,8 +121,9 @@
 
                 // Affichage de l'équivalent d'achat et de vente de 100$
                 usdEquivalentContainer.innerHTML = `
-                <p>Nous achetons 100$ pour ${purchaseAmount}€</p>
-                <p>Nous vendons 100$ pour ${saleAmount}€</p>
+                <div class="marquee">
+                    <p>Nous achetons 100$ pour ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; Nous vendons 100$ pour ${saleAmount}€  &nbsp;&nbsp;&nbsp; We buy 100$ for ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; We Sell 100$ for ${saleAmount}€</p>
+                </div>
             `;
             } else {
                 usdEquivalentContainer.innerHTML = `<p>Impossible de récupérer les taux pour le dollar (USD).</p>`;

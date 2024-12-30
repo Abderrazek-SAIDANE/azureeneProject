@@ -95,6 +95,35 @@ table.dataTable tbody tr:hover {
   transition: all 0.2s;
 }
 
+        /* Conteneur pour le texte défilant */
+        .marquee {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden; /* Cache le texte qui dépasse */
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+      }
+
+      /* Animation pour faire défiler le texte */
+      .marquee p {
+          display: inline-block;
+          padding-left: 100%; /* Commence le texte à droite */
+          animation: marquee 20s linear infinite; /* Animation infinie */
+      }
+
+      /* Animation clé pour faire défiler le texte de droite à gauche */
+      @keyframes marquee {
+          0% {
+              transform: translateX(0);
+          }
+          100% {
+              transform: translateX(-100%);
+          }
+      }
+
+    
+
 /* Responsivité */
 @media (max-width: 485px) {
   table.dataTable,
