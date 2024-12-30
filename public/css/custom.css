@@ -68,14 +68,14 @@ table.dataTable thead th {
 
 table.dataTable tbody td {
   color: var(--text-color);
-  font-size: 25px;
+  font-size: 20px;
 }
 
 table.dataTable tbody tr:hover {
   background-color: var(--hover-color);
   transform: scale(1.01);
   transition: transform 0.2s ease, background-color 0.2s ease;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: middle; /* Centre le texte verticalement */
 }
@@ -112,7 +112,7 @@ table.dataTable tbody tr:hover {
     border: 1px solid #444;
     line-height: 4; /* Ajuster la hauteur des lignes */
     padding: 10px 0; /* Ajouter de l'espace autour du texte */
-    font-size: 30px;
+    font-size: 20px;
     text-align: center; /* Centre le texte horizontalement */
     vertical-align: middle; /* Centre le texte verticalement */
   }
