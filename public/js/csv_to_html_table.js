@@ -81,6 +81,7 @@ CsvToHtmlTable = {
                 width: "80px",
                 height: "auto",
                 borderRadius: "5px",
+                
             });
             return img.prop("outerHTML"); // Retourne l'élément HTML sous forme de string
         }
