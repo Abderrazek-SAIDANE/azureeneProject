@@ -2,7 +2,7 @@
   --primary-color: #002487; /* Couleur principale */
   --secondary-color: #6366f1; /* Couleur secondaire */
   --text-color: #000000; /* Couleur du texte */
-  --hover-color: #444; /* Couleur au survol */
+  --hover-color: #8e9bc1; /* Couleur au survol */
 }
 
 body {
@@ -50,6 +50,29 @@ td {
 a:hover {
   text-decoration: #000000;
 }
+
+/* Appliquer un effet zébré aux lignes du tableau */
+table.dataTable tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Couleur pour les lignes impaires */
+}
+
+table.dataTable tbody tr:nth-child(even) {
+  background-color: #dbd5d5; /* Couleur pour les lignes paires */
+}
+
+/* Augmenter le contraste entre les lignes */
+table.dataTable tbody tr:hover {
+  background-color: #d6d6d6; /* Couleur au survol */
+}
+
+/* Ajuster l'espacement du texte */
+table.dataTable tbody td {
+  padding: 10px; /* Plus d'espacement pour améliorer la lisibilité */
+  text-align: center; /* Centrer le texte */
+}
+
+
+
 
 table.dataTable {
   background-color: #ffffff;

@@ -33,7 +33,7 @@ CsvToHtmlTable = {
     },
 
     renderTable: function (data, $table, csv_options, datatables_options, customTemplates) {
-        const newHeader = ["Drapeau\r\nFlag", "Pays\r\nCountry", "Devise", "Nous achetons\r\nWe buy", "Nous vondons\r\nWe sell"];
+        const newHeader = ["Drapeau\r\nFlag", "Pays\r\nCountry", "Devise", "Nous achetons\r\nWe buy", "Nous vendons\r\nWe sell"];
         var csvData = $.csv.toArrays(data, csv_options);
         // Création du header de la table
         var $tableHead = $("<thead></thead>");
