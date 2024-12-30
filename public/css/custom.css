@@ -129,34 +129,57 @@ table.dataTable tbody tr:hover {
   transition: all 0.2s;
 }
 
-        /* Conteneur pour le texte défilant */
-        .marquee {
-          display: block;
-          white-space: nowrap;
-          overflow: hidden; /* Cache le texte qui dépasse */
-          position: absolute;
-          width: 100%;
-          bottom: 0;
-      }
+/* Style pour le texte défilant */
+.marquee {
+  white-space: nowrap;
+  overflow: hidden; /* Cache le texte en dehors du conteneur */
+  position: fixed; /* Position fixe au-dessus du footer */
+  width: 100%;
+  bottom: 50px; /* Espace réservé pour le footer (50px) */
+  background-color: #f1f1f1; /* Couleur de fond */
+  padding: 10px 0; /* Espacement vertical */
+  border-top: 1px solid #ccc; /* Optionnel : bordure supérieure */
+  text-align: center; /* Centre le texte horizontalement */
+  z-index: 100; /* Assure que le texte reste au-dessus du contenu */
+}
 
-      /* Animation pour faire défiler le texte */
-      .marquee p {
-          display: inline-block;
-          padding-left: 100%; /* Commence le texte à droite */
-          animation: marquee 20s linear infinite; /* Animation infinie */
-      }
+/* Animation pour le texte défilant */
+.marquee p {
+  display: inline-block;
+  padding-left: 100%; /* Commence le texte à droite */
+  animation: marquee 20s linear infinite; /* Animation infinie */
+  font-size: 16px; /* Taille du texte */
+  color: #333; /* Couleur du texte */
+  font-weight: bold; /* Optionnel : texte en gras */
+}
 
-      /* Animation clé pour faire défiler le texte de droite à gauche */
-      @keyframes marquee {
-          0% {
-              transform: translateX(0);
-          }
-          100% {
-              transform: translateX(-100%);
-          }
-      }
+/* Animation de défilement */
+@keyframes marquee {
+  from {
+      transform: translateX(0); /* Position initiale */
+  }
+  to {
+      transform: translateX(-100%); /* Défilement complet vers la gauche */
+  }
+}
 
-    
+/* Style pour le footer */
+footer {
+  position: fixed;
+  bottom: 0; /* Fixe le footer en bas */
+  width: 100%; /* Prend toute la largeur */
+  background-color: #333; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  text-align: center; /* Centrer le texte */
+  padding: 10px 0; /* Espacement vertical */
+  z-index: 50; /* Z-index inférieur à celui du texte défilant */
+}
+
+/* Réserve de l'espace pour le contenu principal au-dessus du footer */
+body {
+  padding-bottom: 100px; /* Réserve de l'espace pour le footer et le texte défilant */
+}
+
 
 /* Responsivité */
 @media (max-width: 485px) {
