@@ -87,6 +87,7 @@ table.dataTable  thead th:last-child {
 table.dataTable {
   background-color: #ffffff;
   border-color: var(--secondary-color);
+  padding-bottom: 10px;
 }
 
 table.dataTable thead th {
