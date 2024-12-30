@@ -139,7 +139,7 @@ table.dataTable tbody tr:hover {
   background-color: #f1f1f1; /* Couleur de fond */
   padding: 10px 0; /* Espacement vertical */
   border-top: 1px solid #ccc; /* Optionnel : bordure en haut */
-  z-index: 100; /* Assure que le texte reste au-dessus des autres éléments */
+  padding-bottom: 40px;
   text-align: center; /* Centre le texte horizontalement */
 }
 
