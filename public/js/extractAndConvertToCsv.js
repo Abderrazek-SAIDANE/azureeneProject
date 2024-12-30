@@ -69,21 +69,27 @@ function extractAndConvertToCsv(jsonData) {
         }
     });
 
-    // Parcourir chaque objet filtré et ajouter ses valeurs
-    sortedData.forEach(obj => {
-        const values = headers.map(header => {
-            let value = obj[header] || ""; // Si la valeur est undefined ou null, la remplacer par une chaîne vide
-
-            // Si la valeur est une chaîne qui contient des caractères spéciaux, l'échapper
-            if (typeof value === "string" && (value.includes(";") || value.includes('"') || value.includes("\n"))) {
-                value = `"${value.replace(/"/g, '""')}"`; // Remplacer les guillemets par des guillemets échappés
-            }
-            return value;
+        // Parcourir chaque objet filtré et ajouter ses valeurs avec les taux inversés
+        sortedData.forEach(obj => {
+            const buyRate = parseFloat(obj.BuyRate);
+            const sellRate = parseFloat(obj.SellRate);
+            const inverseBuyRate = parseFloat(obj.InverseBuyRate);
+            const inverseSellRate = parseFloat(obj.InverseSellRate);
+    
+            /*if (isNaN(buyRate) || isNaN(sellRate)) {
+                throw new Error(`Les taux d'achat ou de vente sont invalides pour la devise ${obj.CurrencyAlias}`);
+            }*/
+    
+            // Ligne avec les taux inversés
+            csvRows.push([
+                obj.Flag,
+                obj.Country,
+                obj.CurrencyAlias,
+                `"1 EUR = ${inverseBuyRate} ${obj.CurrencyAlias}\r\n1 ${obj.CurrencyAlias} = ${buyRate} EUR"`, // Utilisation de \r\n pour un retour à la ligne
+                `"1 EUR = ${inverseSellRate} ${obj.CurrencyAlias}\r\n1 ${obj.CurrencyAlias} = ${sellRate} EUR"` // Utilisation de \r\n pour un retour à la ligne
+            ].join(";"));
         });
-
-        csvRows.push(values.join(";")); // Ajouter la ligne au CSV
-    });
-
+        
     // Retourner les lignes CSV sous forme de chaîne
     return csvRows.join("\n");
 };
