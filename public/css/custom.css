@@ -9,7 +9,7 @@ body {
   background-color: #ffffff;
   color: var(--secondary-color);
   margin: 0;
-  padding: 20;
+  padding: 10px;
   font-family: Arial, sans-serif;
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: middle; /* Centre le texte verticalement */
@@ -44,7 +44,7 @@ td {
   position: relative;
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: center; /* Centre le texte verticalement */
-  padding: 20px;
+  padding: 10px;
 }
 
 a:hover {
@@ -67,20 +67,20 @@ table.dataTable tbody tr:hover {
 
 /* Ajuster l'espacement du texte */
 table.dataTable tbody td {
-  padding: 20px; /* Plus d'espacement pour améliorer la lisibilité */
+  padding: 10px; /* Plus d'espacement pour améliorer la lisibilité */
   text-align: center; /* Centrer le texte */
 }
 
 /* Appliquer une largeur fixe aux deux dernières colonnes */
 table.dataTable  tbody td:nth-last-child(2),
 table.dataTable  tbody td:last-child {
-    width: 350px; /* Ajustez la largeur selon vos besoins */
+    width: 450px; /* Ajustez la largeur selon vos besoins */
 }
 
 /* Appliquer la même règle aux en-têtes */
 table.dataTable  thead th:nth-last-child(2),
 table.dataTable  thead th:last-child {
-    width: 350px;
+    width: 450px;
 }
 
 
@@ -93,7 +93,7 @@ table.dataTable {
 table.dataTable thead th {
   background-color: #ffffff;
   color: var(--text-color);
-  font-size: 30px;
+  font-size: 20px;
   white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
   word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
   text-align: center; /* Centre le texte horizontalement */
@@ -103,7 +103,7 @@ table.dataTable thead th {
 
 table.dataTable tbody td {
   color: var(--text-color);
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   padding: 0px;
 }
