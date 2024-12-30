@@ -14,6 +14,7 @@ body {
 }
 
 header {
+  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,16 +48,19 @@ table.dataTable {
 table.dataTable thead th {
   background-color: #ffffff;
   color: var(--text-color);
+  font-size: 30px;
 }
 
 table.dataTable tbody td {
   color: var(--text-color);
+  font-size: 30px;
 }
 
 table.dataTable tbody tr:hover {
   background-color: var(--hover-color);
   transform: scale(1.01);
   transition: transform 0.2s ease, background-color 0.2s ease;
+  font-size: 30px;
 }
 
 /* Pagination */
@@ -70,17 +74,6 @@ table.dataTable tbody tr:hover {
   font-size: 0.875rem;
   transition: all 0.2s;
 }
-
-/*.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border-color: var(--secondary-color);
-}*/
 
 /* Responsivité */
 @media (max-width: 485px) {
@@ -100,7 +93,11 @@ table.dataTable tbody tr:hover {
   table.dataTable tr {
     margin-bottom: 15px;
     border: 1px solid #444;
+    line-height: 4; /* Ajuster la hauteur des lignes */
+    padding: 10px 0; /* Ajouter de l'espace autour du texte */
+    font-size: 30px;
   }
+  
 
   table.dataTable td {
     display: flex;
