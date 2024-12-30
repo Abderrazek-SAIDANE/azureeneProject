@@ -74,13 +74,13 @@ table.dataTable tbody td {
 /* Appliquer une largeur fixe aux deux dernières colonnes */
 table.dataTable  tbody td:nth-last-child(2),
 table.dataTable  tbody td:last-child {
-    width: 400px; /* Ajustez la largeur selon vos besoins */
+    width: 380px; /* Ajustez la largeur selon vos besoins */
 }
 
 /* Appliquer la même règle aux en-têtes */
 table.dataTable  thead th:nth-last-child(2),
 table.dataTable  thead th:last-child {
-    width: 400px;
+    width: 380px;
 }
 
 
