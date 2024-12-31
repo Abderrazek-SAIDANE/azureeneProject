@@ -74,18 +74,18 @@ table.dataTable tbody td {
 /* Appliquer une largeur fixe aux deux dernières colonnes */
 table.dataTable  tbody td:nth-last-child(2),
 table.dataTable  tbody td:last-child {
-    width: 380px; /* Ajustez la largeur selon vos besoins */
+    width: 300px; /* Ajustez la largeur selon vos besoins */
 }
 
 /* Appliquer la même règle aux en-têtes */
 table.dataTable  thead th:nth-last-child(1),
 table.dataTable  thead th:last-child {
-    width: 380px;
+    width: 300px;
 }
 
 #currencyTable td:nth-child(2),
 #currencyTable th:nth-child(2) {
-    width: 600px; /* Élargir la deuxième colonne */
+    width: 300px; /* Élargir la deuxième colonne */
 }
 
 
