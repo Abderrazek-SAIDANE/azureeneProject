@@ -99,7 +99,7 @@
                     delimiter: '"'
                 },
                 datatables_options: {
-                    lengthMenu: [10, 20, 50, 100], // Permet de choisir d'autres options de pagination
+                    lengthMenu: [10, 15, 18, 20, 50, 100], // Permet de choisir d'autres options de pagination
                     paging: true, // Active la pagination
                     searching: false, // Active la recherche
                     info: false // Affiche les informations sur le tableau
@@ -127,7 +127,7 @@
                 usdEquivalentContainer.innerHTML = `<p>Impossible de récupérer les taux pour le dollar (USD).</p>`;
             }
 
-            document.querySelector('select[name="table-container-table_length"]').value = 20;
+            document.querySelector('select[name="table-container-table_length"]').value = 18;
             document.querySelector('select[name="table-container-table_length"]').dispatchEvent(new Event('change'));
 
 
