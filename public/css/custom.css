@@ -88,8 +88,6 @@ table.dataTable  thead th:last-child {
     width: 300px; /* Élargir la deuxième colonne */
 }
 
-
-
 table.dataTable {
   background-color: #ffffff;
   border-color: var(--secondary-color);
@@ -104,7 +102,6 @@ table.dataTable thead th {
   word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: middle; /* Centre le texte verticalement */
-
 }
 
 table.dataTable tbody td {
@@ -153,7 +150,7 @@ table.dataTable tbody tr:hover {
 .marquee p {
   display: inline-block;
   padding-left: 100%; /* Commence le texte à droite */
-  animation: marquee 20s linear infinite; /* Animation infinie */
+  animation: marquee 25s linear infinite; /* Animation infinie */
   font-size: 30px; /* Taille du texte */
   color: #333; /* Couleur du texte */
   font-weight: bold; /* Optionnel : texte en gras */
@@ -168,9 +165,6 @@ table.dataTable tbody tr:hover {
       transform: translateX(-100%); /* Défilement complet vers la gauche */
   }
 }
-
-
-    
 
 /* Responsivité */
 @media (max-width: 485px) {
