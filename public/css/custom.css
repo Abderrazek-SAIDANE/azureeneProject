@@ -166,6 +166,13 @@ table.dataTable tbody tr:hover {
   }
 }
 
+/*.tradingview-widget-container {
+  width: 200%; 
+  max-width: 4000px; 
+  height: 1000px; 
+  margin: 0 auto; 
+}*/
+
 /* Responsivité */
 @media (max-width: 485px) {
   table.dataTable,

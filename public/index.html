@@ -26,29 +26,53 @@
                 <p id="current-date" style="font-weight: bold; color: black; font-size: 30px; text-transform: uppercase; margin-top: 10px; margin-bottom: 10px;"></p>
             </header>
             <!-- TradingView Widget BEGIN -->
-            <div class="tradingview-widget-container" style="user-select: none; box-sizing: border-box; display: block; height: 74px; width: 100%;">
-                <div class="tradingview-widget-container__widget" style="user-select: none; box-sizing: border-box; display: block; height: 74px; width: 100%;"></div>
+            <div class="tradingview-widget-container">
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
                  {
                     "symbols": [
                         { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
                         { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
-                        { "description": "XAUUSD", "proName": "Gold" },
-                        { "description": "XAGUSD", "proName": "Silver" }
+                        { "proName": "Gold", "title": "XAUUSD" },
+                        { "proName": "Silver", "title": "XAGUSD" }
                     ],
                     "showSymbolLogo": true,
                     "isTransparent": false,
-                    "displayMode": "adaptive",
+                    "displayMode": "compact",
                     "colorTheme": "light",
                     "locale": "fr",
-                    "height": "300",
-                    "width": "100%",
-                    "autosize": true
+                    "height": "650",
+                    "width": "350",
+                    "autosize": true,
+                    "font-size": "32px"
                 }
                 </script>
-                </div>
             <!-- TradingView Widget END -->
             </div>
+
+            <!-- Styles pour ajuster l'espacement -->
+            <style>
+                .tradingview-widget-container iframe {
+                    width: 80% !important; /* Assure que le widget occupe tout l'espace du conteneur */
+                    height: 100px; /* Hauteur du bandeau */
+                }
+
+                /* Sélectionnez le contenu à l'intérieur du widget */
+                .tradingview-widget-container iframe {
+                    padding: 0 20px; /* Ajoute un espacement horizontal */
+                    box-sizing: content-box;
+                    font-size: 32;
+                    size: 32px;
+                    height: max-content;
+                    width: max-content;
+                    margin: auto;
+                }
+
+                /* Si le script utilise des classes spécifiques (vous pouvez inspecter avec le navigateur) */
+                .tradingview-widget-container div * {
+                    margin-right: 40px; /* Ajoute un espacement entre les composants */
+                }
+            </style>
+
             
             <main class="row">
                 <div class="col text-center">
@@ -60,7 +84,7 @@
             </main>
         </div>
 
-        <footer id="footer" style="font-size: 35px; position: relative; bottom: 10px; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
+        <footer id="footer" style="font-size: 35px; position: fixed; bottom: 10px; width: 100%; text-align: center; padding: 10px; background-color: #f8f9fa; color: #333;">
             <p id="current-time" style="font-weight: bold;"></p>   <!--Heure actuelle -->
             <p style="font-weight: bold; text-transform: uppercase; color: #002487;">Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
         </footer>
