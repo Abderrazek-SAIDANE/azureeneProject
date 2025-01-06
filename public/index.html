@@ -154,16 +154,16 @@
 
             // Trouver les taux d'achat et de vente du dollar (USD)
             const usdPurchaseRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.BuyRate;
-            const usdSaleRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.SellRate;
+            const usdSaleRate = dataJson.Data.find(rate => rate.FromCurrency === 'USD')?.InverseSellRate;
             if (usdPurchaseRate && usdSaleRate) {
                 // Calcul de l'équivalent de 100$ en achat et en vente
-                const purchaseAmount = (100 * usdPurchaseRate).toFixed(2);
-                const saleAmount = (100 * usdSaleRate).toFixed(2);
+                const purchaseAmount = (100 * usdPurchaseRate).toFixed(0);
+                const saleAmount = (100 * usdSaleRate).toFixed(0);
 
                 // Affichage de l'équivalent d'achat et de vente de 100$
                 usdEquivalentContainer.innerHTML = `
                 <div class="marquee">
-                    <p>Nous achetons 100$ pour ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; Nous vendons 100$ pour ${saleAmount}€  &nbsp;&nbsp;&nbsp; We buy 100$ for ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; We Sell 100$ for ${saleAmount}€</p>
+                    <p>Nous achetons 100$ pour ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; Nous vendons ${saleAmount} pour $ 100€ &nbsp;&nbsp;&nbsp; We buy 100$ for ${purchaseAmount}€  &nbsp;&nbsp;&nbsp; We Sell ${saleAmount}$ for 100€</p>
                 </div>
             `;
             } else {
