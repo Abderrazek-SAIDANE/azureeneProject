@@ -156,6 +156,10 @@ table.dataTable tbody tr:hover {
   font-weight: bold; /* Optionnel : texte en gras */
 }
 
+.weather-widget {
+  font-size: 25px; /* Réduit la taille du texte sur les écrans plus petits */
+}
+
 /* Définition de l'animation */
 @keyframes marquee {
   from {
