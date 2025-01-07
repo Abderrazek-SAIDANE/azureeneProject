@@ -177,7 +177,7 @@ table.dataTable tbody tr:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Ajuste l'alignement vertical */
-  margin-top: 90px; /* Décalage supplémentaire */
+  margin-top: 10px; /* Décalage supplémentaire */
 }
 
 /* Optionnel : Agrandir les en-têtes du tableau */
