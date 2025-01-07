@@ -169,7 +169,7 @@ table.dataTable tbody tr:hover {
 
 /* Agrandir la taille du texte dans le tableau */
 #table-container table {
-  font-size: 25px; /* Taille agrandie pour le texte */
+  font-size: 20px; /* Taille agrandie pour le texte */
   text-align: center; /* Centrer le texte dans les cellules */
 }
 
@@ -182,7 +182,7 @@ table.dataTable tbody tr:hover {
 
 /* Optionnel : Agrandir les en-têtes du tableau */
 #table-container table th {
-  font-size: 30px; /* Taille agrandie pour les en-têtes */
+  font-size: 25px; /* Taille agrandie pour les en-têtes */
   font-weight: bold; /* Mettre en gras pour plus de lisibilité */
 }
 
