@@ -77,7 +77,7 @@ CsvToHtmlTable = {
             img.attr("src", cellValue);
             img.attr("alt", "Image");
             img.css({
-                width: "80px",
+                width: "100px",
                 height: "auto",
                 borderRadius: "5px",
             });
