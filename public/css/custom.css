@@ -67,7 +67,7 @@ table.dataTable tbody tr:hover {
 
 /* Ajuster l'espacement du texte */
 table.dataTable tbody td {
-  padding: 10px; /* Plus d'espacement pour améliorer la lisibilité */
+  padding: 100px; /* Plus d'espacement pour améliorer la lisibilité */
   text-align: center; /* Centrer le texte */
 }
 
@@ -97,7 +97,7 @@ table.dataTable {
 table.dataTable thead th {
   background-color: #ffffff;
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 25px;
   white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
   word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
   text-align: center; /* Centre le texte horizontalement */
@@ -106,7 +106,7 @@ table.dataTable thead th {
 
 table.dataTable tbody td {
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 35x;
   font-weight: bold;
   padding: 0px;
 }
@@ -166,12 +166,37 @@ table.dataTable tbody tr:hover {
   }
 }
 
-/*.tradingview-widget-container {
-  width: 200%; 
-  max-width: 4000px; 
-  height: 1000px; 
+
+/* Agrandir la taille du texte dans le tableau */
+#table-container table {
+  font-size: 25px; /* Taille agrandie pour le texte */
+  text-align: center; /* Centrer le texte dans les cellules */
+}
+
+#table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ajuste l'alignement vertical */
+  margin-top: 90px; /* Décalage supplémentaire */
+}
+
+/* Optionnel : Agrandir les en-têtes du tableau */
+#table-container table th {
+  font-size: 30px; /* Taille agrandie pour les en-têtes */
+  font-weight: bold; /* Mettre en gras pour plus de lisibilité */
+}
+
+/* Optionnel : Centrer verticalement les cellules */
+#table-container table td {
+  vertical-align: middle;
+}
+
+#tradingview-widget-container {
+  width: 100%; 
+  max-width: 100px; 
+  height: 100px; 
   margin: 0 auto; 
-}*/
+}
 
 /* Responsivité */
 @media (max-width: 485px) {
@@ -191,7 +216,7 @@ table.dataTable tbody tr:hover {
   table.dataTable tr {
     border: 1px solid #444;
     line-height: 1; /* Ajuster la hauteur des lignes */
-    font-size: 20px;
+    font-size: 30px;
     text-align: center; /* Centre le texte horizontalement */
     vertical-align: middle; /* Centre le texte verticalement */
   }
