@@ -16,7 +16,7 @@ body {
 }
 
 header {
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ h1 {
   justify-content: center;
   align-items: center;
   display: flex;
-  font: 32px/1em 'GibsonBold', Arial;
+  font: 30px/1em 'GibsonBold', Arial;
   text-transform: uppercase;
   color: var(--primary-color);
 }
@@ -38,126 +38,52 @@ a {
   text-decoration: #000000;
 }
 
-td {
-  white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
-  word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
-  position: relative;
-  text-align: center; /* Centre le texte horizontalement */
-  vertical-align: center; /* Centre le texte verticalement */
-  padding: 0px;
-}
-
-a:hover {
-  text-decoration: #000000;
-}
-
-/* Appliquer un effet zébré aux lignes du tableau */
-table.dataTable tbody tr:nth-child(odd) {
-  background-color: #f9f9f9; /* Couleur pour les lignes impaires */
-}
-
-table.dataTable tbody tr:nth-child(even) {
-  background-color: #aad1f8; /* Couleur pour les lignes paires */
-}
-
-/* Augmenter le contraste entre les lignes */
-table.dataTable tbody tr:hover {
-  background-color: #d6d6d6; /* Couleur au survol */
-}
-
-/* Ajuster l'espacement du texte */
-table.dataTable tbody td {
-  padding: 10px; /* Plus d'espacement pour améliorer la lisibilité */
-  text-align: center; /* Centrer le texte */
-}
-
-/* Appliquer une largeur fixe aux deux dernières colonnes */
-table.dataTable  tbody td:nth-last-child(2),
-table.dataTable  tbody td:last-child {
-    width: 350px; /* Ajustez la largeur selon vos besoins */
-}
-
-/* Appliquer la même règle aux en-têtes */
-table.dataTable  thead th:nth-last-child(2),
-table.dataTable  thead th:last-child {
-    width: 350px;
-}
-
-
-table.dataTable {
-  background-color: #ffffff;
-  border-color: var(--secondary-color);
-  padding-bottom: 10px;
-}
-
-table.dataTable thead th {
-  background-color: #ffffff;
-  color: var(--text-color);
-  font-size: 30px;
+/* Conteneur pour le texte défilant */
+.marquee {
+  white-space: nowrap;
+  overflow: hidden; /* Cache le texte qui dépasse */
+  position: static;
+  width: 100%;
+  bottom: 0;
   white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
   word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: middle; /* Centre le texte verticalement */
-
+  padding-top: 60px;
 }
 
-table.dataTable tbody td {
-  color: var(--text-color);
-  font-size: 20px;
-  font-weight: bold;
-  padding: 0px;
-}
-
-table.dataTable tbody tr:hover {
-  background-color: var(--hover-color);
-  transform: scale(1);
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  font-size: 20px;
+#exchange-rates {
+  padding-top: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
+  word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: middle; /* Centre le texte verticalement */
-  padding: 0px;
+  font-size: 25px;
 }
 
-/* Pagination */
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  padding: 0.25rem 0.5rem;
-  margin: 0 0.25rem;
-  border: 1px solid #ffffff;
-  border-radius: 0.375rem;
-  color: var(--text-color);
-  font-size: 0.875rem;
-  transition: all 0.2s;
+.rate-item {
+  display: inline;
+  align-items: center; /* Aligne les éléments verticalement */
+  margin-bottom: 1px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 1px;
 }
 
-        /* Conteneur pour le texte défilant */
-        .marquee {
-          display: block;
-          white-space: nowrap;
-          overflow: hidden; /* Cache le texte qui dépasse */
-          position: absolute;
-          width: 100%;
-          bottom: 0;
-      }
+.rate-item img {
+  display: inline-block;
+  margin-right: 10px; /* Espace entre le drapeau et le texte */
+  border-radius: 4px;
+}
 
-      /* Animation pour faire défiler le texte */
-      .marquee p {
-          display: inline-block;
-          padding-left: 100%; /* Commence le texte à droite */
-          animation: marquee 20s linear infinite; /* Animation infinie */
-      }
+.rate-item span {
+  color: #333;
+  display: inline-block;
+}
 
-      /* Animation clé pour faire défiler le texte de droite à gauche */
-      @keyframes marquee {
-          0% {
-              transform: translateX(0);
-          }
-          100% {
-              transform: translateX(-100%);
-          }
-      }
 
-    
-
+  
 /* Responsivité */
 @media (max-width: 485px) {
   table.dataTable,

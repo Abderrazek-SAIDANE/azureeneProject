@@ -12,7 +12,7 @@ function extractAndConvertToCsv(jsonData) {
     }
 
     // Définir les devises à afficher dans un ordre précis
-    const displayCurrencies = ["USD", "GBP", "CAD", "CHF", "AUD", "DKK", "NOK", "SEK", "JPY", "CNY", "HKD", "AED", "SAR", "MXN", "EGP", "THB", "TND", "MAD"];
+    const displayCurrencies = ["USD", "GBP", "JPY"];
 
     // Extraire les en-têtes du CSV
     const headers = ["Flag", "Country", "CurrencyAlias", "BuyRate", "SellRate"];
@@ -47,17 +47,13 @@ function extractAndConvertToCsv(jsonData) {
         const inverseBuyRate = parseFloat(obj.InverseBuyRate);
         const inverseSellRate = parseFloat(obj.InverseSellRate);
 
-        /*if (isNaN(buyRate) || isNaN(sellRate)) {
-            throw new Error(`Les taux d'achat ou de vente sont invalides pour la devise ${obj.CurrencyAlias}`);
-        }*/
-
         // Ligne avec les taux inversés
         csvRows.push([
             obj.Flag,
             obj.Country,
             obj.CurrencyAlias,
-            `"1 EUR = ${inverseBuyRate} ${obj.CurrencyAlias}\r\n1 ${obj.CurrencyAlias} = ${buyRate} EUR"`, // Utilisation de \r\n pour un retour à la ligne
-            `"1 EUR = ${inverseSellRate} ${obj.CurrencyAlias}\r\n1 ${obj.CurrencyAlias} = ${sellRate} EUR"` // Utilisation de \r\n pour un retour à la ligne
+            obj.BuyRate, // Utilisation de \r\n pour un retour à la ligne
+            obj.SellRate// Utilisation de \r\n pour un retour à la ligne
         ].join(";"));
     });
 
