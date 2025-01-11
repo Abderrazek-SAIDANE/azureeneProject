@@ -51,7 +51,7 @@ a {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333; /* Couleur du texte */
-  padding: 5px; /* Réduction de l'espacement interne */
+  padding: 0px; /* Réduction de l'espacement interne */
   margin: 0; /* Supprime les marges par défaut */
   width: 100%; /* Le texte occupe toute la largeur */
   box-sizing: border-box; /* Inclut le padding dans la largeur totale */
@@ -75,23 +75,33 @@ a {
   padding: 0; /* Supprime l'espacement interne */
 }
 
-/* Section Cours du jour */
-#current-date {
-  margin: 0; /* Supprime les marges par défaut */
-  padding: 0; /* Supprime les espaces internes */
+/* Conteneur principal (texte et image) */
+#exchange-rates {
+  margin: 0 auto; /* Supprime les marges externes autour du conteneur */
+  padding: 10px 0; /* Réduit les espaces internes (haut et bas) */
+  text-align: center; /* Centre le contenu */
+  width: 100%; /* Assurez-vous que le conteneur ne dépasse pas */
 }
 
-/* Texte des taux */
+/* Texte à l'intérieur du conteneur */
 .exchange-text {
-  margin: 10px 0; /* Réduit l'espacement vertical entre les sections */
+  margin: -40px; /* Supprime les marges du texte */
+  padding: 0; /* Supprime les espaces internes */
+  line-height: 1.2; /* Ajuste l'espacement entre les lignes */
+}
+
+/* Image à l'intérieur du conteneur */
+.exchange-image-container {
+  margin: 0; /* Supprime les marges autour de l'image */
   padding: 0; /* Supprime les espaces internes */
 }
 
-/* Conteneur principal */
-.container-fluid {
-  padding: 0; /* Supprime les marges internes inutiles */
-  margin: 0 auto; /* Centre horizontalement le conteneur */
+.exchange-image {
+  max-width: 100%; /* L'image occupe toute la largeur possible sans dépasser */
+  height: auto; /* Maintient les proportions */
+  display: block; /* Évite tout espacement sous l'image */
 }
+
 
 
 /* Responsivité */
