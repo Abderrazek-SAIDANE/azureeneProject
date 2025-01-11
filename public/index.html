@@ -18,25 +18,27 @@
             <!-- En-tête avec le logo, le nom du bureau de change, et la date de cotation -->
             <header style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center">
                 <!-- Logo (bloc séparé) -->
-                <img src="./images/azurennePicture.jpg" alt="logo" width="600">
+                <img src="./images/azurennePicture.jpg" alt="logo" width="500">
                 <!-- Nom du bureau de change sous le logo -->
-                <h1 style="font-size: 40px; font-weight: bold; padding: auto; margin: auto; margin-top: 10px;">CANNES</h1> 
+                <!-- Date de cotation sous le nom -->
+                <p id="current-date" style="font-weight: bold; color: #002487; font-size: 35px; padding: auto; margin: auto; white-space: pre-line;"></p>
             </header>    
         </div>
 
         <main>
             <div id="exchange-rates" class="exchange-container">
-                <img src="./images/usd.jpg" alt="banknote" class="exchange-image">
                 <div id="exchange-text" class="exchange-text">
                     <!-- Le texte s'affichera ici -->
+                </div>
+                <div class="exchange-image-container">
+                    <img src="./images/usd.jpg" alt="banknote" class="exchange-image">
+                </div>   
                 </div>
             </div>
         </main>
 
 
         <footer id="footer" style="font-size: 25px; position: fixed; bottom: 10px; width: 100%; text-align: center; background-color: #f8f9fa; color: #333;">
-            <!-- Date de cotation sous le nom -->
-            <p id="current-date" style="font-weight: bold; color: black; font-size: 25px; padding: auto; margin: auto; white-space: pre-line;"></p>
             <!--<p id="current-time" style="font-weight: bold;"></p> --> <!-- Heure actuelle -->
             <p style="font-weight: bold; text-transform: uppercase; color: #002487;">Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
         </footer>
@@ -89,11 +91,11 @@
             return `
                 <div class="rate-item d-flex align-items-center">
                     <span style="margin: 0; font-size: 40px; font-weight: bold;">
-                        Achat / Buy : 1$ = ${rate.BuyRate}€     
-                        Achat / Buy : 100$ = ${purchaseAmount}€
+                        Nous achatons / We buy : 1$ = ${rate.BuyRate}€     
+                        Nous achatons / We buy : 100$ = ${purchaseAmount}€
 
-                        Vente / Sell : 1€ = ${saleUnit}€
-                        Vente / Sell : 100€ = ${saleAmount}$
+                        Nous vendons / We sell : 1€ = ${saleUnit}€
+                        Nous vendons / We sell : 100€ = ${saleAmount}$
                     </span>
                 </div>
             `;
