@@ -42,6 +42,7 @@ a {
   text-align: center; /* Centre le texte horizontalement */
   vertical-align: middle; /* Centre le texte verticalement */
   font-size: 25px;
+  margin-top: 10px;
 }
 
 /* Conteneur principal */
@@ -78,7 +79,6 @@ a {
   text-align: center; /* Centrer le texte */
   white-space: pre-line; /* Permet les sauts de ligne */
   width: 100%;
-
 }
 
 

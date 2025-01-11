@@ -33,6 +33,7 @@
             </div>
         </main>
 
+
         <footer id="footer" style="font-size: 25px; position: fixed; bottom: 10px; width: 100%; text-align: center; background-color: #f8f9fa; color: #333;">
             <!-- Date de cotation sous le nom -->
             <p id="current-date" style="font-weight: bold; color: black; font-size: 25px; padding: auto; margin: auto; white-space: pre-line;"></p>
@@ -84,14 +85,15 @@
                             // Calcul de l'équivalent de 100$ en achat et en vente
                 const purchaseAmount = (100 * rate.BuyRate).toFixed(0);
                 const saleAmount = (100 * (1/rate.SellRate)).toFixed(0);
+                const saleUnit = (1/rate.SellRate).toFixed(2);
             return `
                 <div class="rate-item d-flex align-items-center">
                     <span style="margin: 0; font-size: 40px; font-weight: bold;">
                         Achat / Buy : 1$ = ${rate.BuyRate}€     
                         Achat / Buy : 100$ = ${purchaseAmount}€
 
-                        Vente / Sell : 1$ = ${rate.SellRate}€
-                        Vente / Sell : 100$ = ${saleAmount}€
+                        Vente / Sell : 1€ = ${saleUnit}€
+                        Vente / Sell : 100€ = ${saleAmount}$
                     </span>
                 </div>
             `;
