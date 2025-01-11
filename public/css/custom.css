@@ -102,6 +102,10 @@ a {
   display: block; /* Évite tout espacement sous l'image */
 }
 
+.red-text {
+  color: red;
+  font-weight: bold; /* Optionnel : met le texte en gras */
+}
 
 
 /* Responsivité */

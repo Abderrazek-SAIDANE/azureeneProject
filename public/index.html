@@ -89,13 +89,13 @@
                 const saleUnit = (1/rate.SellRate).toFixed(2);
             return `
                 <div class="rate-item d-flex align-items-center">
-                    <span style="margin: 0; font-size: 40px; font-weight: bold;">
-                        Achat / Buy : 1$ = ${rate.BuyRate}€     
-                        Achat / Buy : 100$ = ${purchaseAmount}€
+                    <div style="margin: 0; font-size: 40px; font-weight: bold;">
+                        Achat / Buy : <span class="red-text">1$ = ${rate.BuyRate}€</span>   
+                        Achat / Buy : <span class="red-text">100$ = ${purchaseAmount}€</span>
 
-                        Vente / Sell : 1€ = ${saleUnit}€
-                        Vente / Sell : 100€ = ${saleAmount}$
-                    </span>
+                        Vente / Sell : <span class="red-text">1€ = ${saleUnit}$</span>
+                        Vente / Sell : <span class="red-text">100€ = ${saleAmount}$</span>
+                    </div>
                 </div>
             `;
             }).join("");
