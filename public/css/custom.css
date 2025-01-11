@@ -89,7 +89,7 @@ span {
 
 /* Texte à l'intérieur du conteneur */
 .exchange-text {
-  margin: -20px; /* Supprime les marges du texte */
+  margin: -0; /* Supprime les marges du texte */
   padding: 0; /* Supprime les espaces internes */
   line-height: 1.2; /* Ajuste l'espacement entre les lignes */
 }
