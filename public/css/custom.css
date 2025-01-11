@@ -35,6 +35,10 @@ a {
   text-decoration: #000000;
 }
 
+span {
+  font-size: 70px;
+}
+
 /* Conteneur principal */
 .exchange-container {
   display: flex;
