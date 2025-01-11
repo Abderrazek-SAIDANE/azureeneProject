@@ -36,7 +36,7 @@ a {
 }
 
 span {
-  font-size: 70px;
+  font-size: 50px;
 }
 
 /* Conteneur principal */
@@ -109,6 +109,10 @@ span {
 .red-text {
   color: red;
   font-weight: bold; /* Optionnel : met le texte en gras */
+}
+
+.price {
+  font-size: 70px;
 }
 
 
