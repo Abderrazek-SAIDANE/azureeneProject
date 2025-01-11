@@ -38,16 +38,12 @@ a {
 /* Conteneur principal */
 .exchange-container {
   display: flex;
-  flex-direction: column; /* Organise le texte au-dessus de l'image */
+  flex-direction: column; /* Aligne le texte au-dessus de l'image */
   align-items: center; /* Centre horizontalement le contenu */
   width: 100%;
   max-width: 800px; /* Largeur maximale */
   margin: 0 auto; /* Centre horizontalement le conteneur */
   text-align: center; /* Aligne le texte au centre */
-  border: 1px solid #ccc; /* Optionnel : bordure */
-  border-radius: 10px; /* Coins arrondis */
-  overflow: hidden; /* Empêche le débordement */
-  background: rgba(255, 255, 255, 0.9); /* Fond blanc légèrement transparent */
 }
 
 /* Texte */
@@ -55,8 +51,8 @@ a {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333; /* Couleur du texte */
-  padding: 20px; /* Espacement autour du texte */
-  background: rgba(0, 0, 0, 0.05); /* Optionnel : léger fond gris */
+  padding: 5px; /* Réduction de l'espacement interne */
+  margin: 0; /* Supprime les marges par défaut */
   width: 100%; /* Le texte occupe toute la largeur */
   box-sizing: border-box; /* Inclut le padding dans la largeur totale */
   white-space: pre-line; /* Respecte les retours à la ligne */
@@ -64,8 +60,10 @@ a {
 
 /* Conteneur de l'image */
 .exchange-image-container {
-  width: 100%; /* L'image occupe toute la largeur du conteneur */
-  text-align: center; /* Centre l'image */
+  width: 100%; /* L'image occupe toute la largeur */
+  text-align: center; /* Centre l'image horizontalement */
+  margin: 0; /* Supprime l'espacement vertical autour */
+  padding: 0; /* Supprime l'espacement interne */
 }
 
 /* Image */
@@ -73,6 +71,26 @@ a {
   width: 100%; /* Adapte l'image à la largeur du conteneur */
   height: auto; /* Respecte les proportions */
   display: block; /* Supprime tout espacement autour de l'image */
+  margin: 0; /* Supprime l'espacement vertical autour */
+  padding: 0; /* Supprime l'espacement interne */
+}
+
+/* Section Cours du jour */
+#current-date {
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0; /* Supprime les espaces internes */
+}
+
+/* Texte des taux */
+.exchange-text {
+  margin: 10px 0; /* Réduit l'espacement vertical entre les sections */
+  padding: 0; /* Supprime les espaces internes */
+}
+
+/* Conteneur principal */
+.container-fluid {
+  padding: 0; /* Supprime les marges internes inutiles */
+  margin: 0 auto; /* Centre horizontalement le conteneur */
 }
 
 

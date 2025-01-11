@@ -26,14 +26,13 @@
         </div>
 
         <main>
-            <div id="exchange-rates" class="exchange-container">
+            <div id="exchange-rates" class="exchange-container container-fluid">
                 <div id="exchange-text" class="exchange-text">
                     <!-- Le texte s'affichera ici -->
                 </div>
                 <div class="exchange-image-container">
                     <img src="./images/usd.jpg" alt="banknote" class="exchange-image">
                 </div>   
-                </div>
             </div>
         </main>
 
@@ -91,8 +90,8 @@
             return `
                 <div class="rate-item d-flex align-items-center">
                     <span style="margin: 0; font-size: 40px; font-weight: bold;">
-                        Nous achatons / We buy : 1$ = ${rate.BuyRate}€     
-                        Nous achatons / We buy : 100$ = ${purchaseAmount}€
+                        Nous achetons / We buy : 1$ = ${rate.BuyRate}€     
+                        Nous achetons / We buy : 100$ = ${purchaseAmount}€
 
                         Nous vendons / We sell : 1€ = ${saleUnit}€
                         Nous vendons / We sell : 100€ = ${saleAmount}$
