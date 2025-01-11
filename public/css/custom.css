@@ -44,38 +44,43 @@ a {
   font-size: 25px;
 }
 
+/* Conteneur principal */
 .exchange-container {
-  position: relative;
-  text-align: center;
-  width: auto;
-  margin: 0 auto;
+  position: relative; /* Permet la superposition */
+  width: 100%;
+  max-width: 800px; /* Largeur maximale pour éviter qu'il prenne tout l'écran */
+  margin: 0 auto; /* Centrage horizontal */
+  overflow: hidden; /* Assure que le contenu ne dépasse pas */
+  border: 1px solid #ccc; /* Optionnel : ajoute une bordure au conteneur */
+  border-radius: 10px; /* Optionnel : coins arrondis */
 }
 
+/* Image de fond */
 .exchange-image {
-  width: auto;
-  height: auto;
-  position: absolute;
-  z-index: 1;
-  left: 28%;
-  top: 120%;
-
+  width: 100%; /* L'image s'ajuste à la largeur du conteneur */
+  height: auto; /* Respecte les proportions */
 }
 
+/* Texte superposé */
 .exchange-text {
-  position: absolute; /* Positionner le texte au centre de l'image */
-  top: -90%;
-  left: 50%;
-  transform: translate(-50%, 40%); /* Centrer horizontalement et verticalement */
-  z-index: 2;
+  position: absolute; /* Superposition sur l'image */
+  top: 50%; /* Aligne verticalement au centre */
+  left: 50%; /* Aligne horizontalement au centre */
+  transform: translate(-50%, -50%); /* Centre le texte */
+  z-index: 2; /* Met le texte au-dessus de l'image */
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
-  background: rgba(0, 0, 0, 0.25); /* Fond semi-transparent pour améliorer la lisibilité */
-  padding: 0px 0px;
-  border-radius: 10px;
-  white-space: pre-line; /* Gérer les sauts de ligne dans le texte */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Ombre pour améliorer la lisibilité */
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour lisibilité */
+  padding: 10px 20px;
+  border-radius: 10px; /* Arrondir les angles du texte */
+  text-align: center; /* Centrer le texte */
+  white-space: pre-line; /* Permet les sauts de ligne */
+  width: 100%;
+
 }
+
 
 
 
