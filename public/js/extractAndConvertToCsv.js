@@ -12,7 +12,7 @@ function extractAndConvertToCsv(jsonData) {
     }
 
     // Définir les devises à afficher dans un ordre précis
-    const displayCurrencies = ["USD", "GBP", "JPY"];
+    const displayCurrencies = ["USD"];
 
     // Extraire les en-têtes du CSV
     const headers = ["Flag", "Country", "CurrencyAlias", "BuyRate", "SellRate"];

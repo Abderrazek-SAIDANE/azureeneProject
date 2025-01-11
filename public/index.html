@@ -16,26 +16,25 @@
 <body>
         <div class="container-fluid">
             <!-- En-tête avec le logo, le nom du bureau de change, et la date de cotation -->
-            <header style="text-align: center; padding: 1px; background-color: #f8f9fa; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1px;">
+            <header style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center">
                 <!-- Logo (bloc séparé) -->
-                <img src="./images/azurennePicture.jpg" alt="logo" width="400" style="margin-top: 50px;">
-                
+                <img src="./images/azurennePicture.jpg" alt="logo" width="600">
                 <!-- Nom du bureau de change sous le logo -->
-                <!-- <h1 style="margin-top: 10px; font-size: 25px;">Azuréenne de Change</h1> -->
-                
-                <!-- Date de cotation sous le nom -->
-                <!--<p id="current-date" style="font-weight: bold; color: black; font-size: 25px; text-transform: uppercase;  margin-bottom: 20px;"></p>-->
+                <h1 style="font-size: 40px; font-weight: bold; padding: auto; margin: auto; margin-top: 10px;">CANNES</h1> 
             </header>
-            <main class="row">
-                <div class="col text-center">
-                    <!--<div id="table-container"></div>-->
-                    <!-- Afficher l'équivalent de 100$ en achat et vente -->
-                    <div id="exchange-rates" style="margin-top: 10px; font-weight: bold; color: black; text-transform: uppercase;">
-                        <!-- Les valeurs seront injectées ici -->
+
+            <div id="exchange-rates" class="exchange-container">
+                <img src="./images/usd.jpg" alt="banknote" class="exchange-image">
+                <div id="exchange-text" class="exchange-text">
+                    <!-- Le texte s'affichera ici -->
                 </div>
-            </main>
+            </div>
+            
+    
         </div>
         <footer id="footer" style="font-size: 25px; position: fixed; bottom: 10px; width: 100%; text-align: center; background-color: #f8f9fa; color: #333;">
+            <!-- Date de cotation sous le nom -->
+            <p id="current-date" style="font-weight: bold; color: black; font-size: 25px; padding: auto; margin: auto; white-space: pre-line;"></p>
             <!--<p id="current-time" style="font-weight: bold;"></p> --> <!-- Heure actuelle -->
             <p style="font-weight: bold; text-transform: uppercase; color: #002487;">Pour tout montant important, nous consulter <br> For any important amount, consult us</p>
         </footer>
@@ -51,29 +50,15 @@
             const dateElement = document.getElementById('current-date');
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            dateElement.textContent = `Cotation du ${today.toLocaleDateString('fr-FR', options)}`;
+            dateElement.textContent = `Cours du jour / Quotation date\r\n ${today.toLocaleDateString('fr-FR', options)} / ${today.toLocaleDateString('en-EN', options)}`;
         });
-
-        // Script pour afficher l'heure actuelle
-        function updateTime() {
-            const timeElement = document.getElementById('current-time');
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            timeElement.textContent = `Heure actuelle : ${hours}:${minutes}:${seconds}`;
-        }
-
-        // Mettre à jour l'heure toutes les secondes
-        setInterval(updateTime, 1000);
-
     </script>
 
     
     
     <script>    
     document.addEventListener("DOMContentLoaded", async () => {
-        const exchangeList = document.getElementById("exchange-rates");
+        const exchangeList = document.getElementById("exchange-text");
             const responseJson = await fetch("/.netlify/functions/getJsonFromApi");
             if (!responseJson.ok) throw new Error("Erreur lors du chargement des données");
 
@@ -92,35 +77,26 @@
                 return obj;
             });
 
+            
             exchangeList.innerHTML = data.map(rate => {
             // Trouver les taux d'achat et de vente de la devise 
                             // Calcul de l'équivalent de 100$ en achat et en vente
                 const purchaseAmount = (100 * rate.BuyRate).toFixed(0);
                 const saleAmount = (100 * (1/rate.SellRate)).toFixed(0);
-
-            const flagUrl = `https://app.currencyxchanger.ca/Content/Flags-Mini/${rate.CurrencyAlias}.JPG`; // Exemple d'URL pour les drapeaux
             return `
                 <div class="rate-item d-flex align-items-center">
-                    <img src="${flagUrl}" alt="${rate.CurrencyAlias}" width="70" class="mr-3">
-                    <span style="margin: 0; font-size: 25px; font-weight: bold;">
-                        Nous achetons 100${rate.CurrencyAlias} pour ${purchaseAmount}€ Nous vendons 1OO€ pour ${saleAmount}${rate.CurrencyAlias}\r\nWe buy 100${rate.CurrencyAlias} for ${purchaseAmount}€ We Sell 100€ for ${saleAmount}${rate.CurrencyAlias}    
+                    <span style="margin: 0; font-size: 40px; font-weight: bold;">
+                        Achat / Buy : 1$ = ${rate.BuyRate}€     
+                        Achat / Buy : 100$ = ${purchaseAmount}€
+
+                        Vente / Sell : 1$ = ${rate.SellRate}€
+                        Vente / Sell : 100$ = ${saleAmount}€
                     </span>
                 </div>
             `;
             }).join("");
     });
     </script>
-
-    <script>
-    let currentTab = 0;
-    // Initialiser le premier onglet
-    showTab(currentTab);
-
-    // Faire défiler les onglets toutes les 60 secondes
-    setInterval(nextTab, 60000);
-    </script>
-
-
 </body>
 
 </html>

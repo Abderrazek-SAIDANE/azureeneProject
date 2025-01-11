@@ -16,12 +16,9 @@ body {
 }
 
 header {
-  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
-  padding: 5px;
 }
 
 h1 {
@@ -38,23 +35,7 @@ a {
   text-decoration: #000000;
 }
 
-/* Conteneur pour le texte défilant */
-.marquee {
-  white-space: nowrap;
-  overflow: hidden; /* Cache le texte qui dépasse */
-  position: static;
-  width: 100%;
-  bottom: 0;
-  white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
-  word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
-  text-align: center; /* Centre le texte horizontalement */
-  vertical-align: middle; /* Centre le texte verticalement */
-  padding-top: 60px;
-}
-
 #exchange-rates {
-  padding-top: 10px;
-  background-color: #f8f9fa;
   border-radius: 8px;
   white-space: pre-line; /* Respecte les sauts de ligne dans le contenu de la cellule */
   word-wrap: break-word; /* Permet de couper les mots longs pour éviter de briser le layout */
@@ -63,53 +44,44 @@ a {
   font-size: 25px;
 }
 
-.rate-item {
-  display: inline;
-  align-items: center; /* Aligne les éléments verticalement */
-  margin-bottom: 1px;
-  border-bottom: 1px solid #000000;
-  padding-bottom: 1px;
+.exchange-container {
+  position: relative;
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
 }
 
-.rate-item img {
-  display: inline-block;
-  margin-right: 10px; /* Espace entre le drapeau et le texte */
-  border-radius: 4px;
+.exchange-image {
+  width: auto;
+  height: auto;
+  position: absolute;
+  z-index: 1;
+  left: 28%;
+  top: 120%;
+
 }
 
-.rate-item span {
-  color: #333;
-  display: inline-block;
+.exchange-text {
+  position: absolute; /* Positionner le texte au centre de l'image */
+  top: -90%;
+  left: 50%;
+  transform: translate(-50%, 40%); /* Centrer horizontalement et verticalement */
+  z-index: 2;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.25); /* Fond semi-transparent pour améliorer la lisibilité */
+  padding: 0px 0px;
+  border-radius: 10px;
+  white-space: pre-line; /* Gérer les sauts de ligne dans le texte */
 }
 
 
-  
+
+
+
 /* Responsivité */
 @media (max-width: 485px) {
-  table.dataTable,
-  table.dataTable thead,
-  table.dataTable tbody,
-  table.dataTable th,
-  table.dataTable td,
-  table.dataTable tr {
-    display: block;
-  }
-
-  table.dataTable thead {
-    display: none;
-  }
-
-  table.dataTable tr {
-    border: 1px solid #444;
-    line-height: 1; /* Ajuster la hauteur des lignes */
-    font-size: 20px;
-    text-align: center; /* Centre le texte horizontalement */
-    vertical-align: middle; /* Centre le texte verticalement */
-  }
   
-
-  table.dataTable td {
-    justify-content: space-between;
-    border-bottom: 0.5px solid var(--primary-color);
-  }
 }
