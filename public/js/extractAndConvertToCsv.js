@@ -46,7 +46,7 @@ function extractAndConvertToCsv(jsonData) {
         if (obj.Country === "United Kingdom of Great Britain and Northern Ireland") {
             obj.Country = "United Kingdom";
         }
-        
+    
         const buyRate = parseFloat(obj.BuyRate);
         const sellRate = parseFloat(obj.SellRate);
         const inverseBuyRate = parseFloat(obj.InverseBuyRate);
