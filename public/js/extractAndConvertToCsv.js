@@ -42,10 +42,6 @@ function extractAndConvertToCsv(jsonData) {
 
     // Parcourir chaque objet filtré et ajouter ses valeurs avec les taux inversés
     sortedData.forEach(obj => {
-
-        if (obj.Country === "United Kingdom of Great Britain and Northern Ireland") {
-            obj.Country = "United Kingdom";
-        }
     
         const buyRate = parseFloat(obj.BuyRate);
         const sellRate = parseFloat(obj.SellRate);

@@ -93,9 +93,10 @@
             const dataJson = await responseJson.json(); // Récupération des données JSON
             const csvRows = extractAndConvertToCsv(dataJson);
 
+
             // Passer les données CSV dans la fonction de génération du tableau HTML
             CsvToHtmlTable.init({
-                csv_path: csvRows, // Utilisez les données CSV générées depuis le JSON
+                csv_path: csvRows.replace(/United Kingdom of Great Britain and Northern Ireland/g, "United Kingdom"), // Utilisez les données CSV générées depuis le JSON
                 element: "table-container",
                 allow_download: false,
                 csv_options: {
