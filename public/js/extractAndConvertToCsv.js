@@ -32,7 +32,7 @@ function extractAndConvertToCsv(jsonData) {
     csvRows.push(headers.join(";"));
 
     // Liste des devises à exclure
-    const excludedCurrencies = ["EUR", "XAU", "DZD"];
+    const excludedCurrencies = ["EUR", "XAU"];
 
     // Filtrer les données pour exclure les devises non souhaitées
     const filteredData = dataArray.filter(obj => 
