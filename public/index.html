@@ -84,7 +84,7 @@
             exchangeList.innerHTML = data.map(rate => {
             // Trouver les taux d'achat et de vente de la devise 
                             // Calcul de l'équivalent de 100$ en achat et en vente
-                const buyRate = (1 * rate.BuyRate).toFixed(2);            
+                const buyRate = (1 * rate.BuyRate).toFixed(3);
                 const purchaseAmount = (100 * rate.BuyRate).toFixed(2);
                 const saleAmount = (100 * (1/rate.SellRate)).toFixed(2);
                 const saleUnit = (1/rate.SellRate).toFixed(2);
